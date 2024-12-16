@@ -7,7 +7,7 @@ import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features")
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "DGMarkt14Cucumber.steps")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "Praktikum14Cucumber.steps")
 @ExcludeTags("ignored")
 public class RunPraktikum14Test {
 }
