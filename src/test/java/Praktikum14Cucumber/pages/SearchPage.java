@@ -30,10 +30,13 @@ public class SearchPage extends BasePage {
     @FindBy(xpath = "//div[@class='card']")
     public List<WebElement> listProduct;
 
+    @FindBy(xpath = "//div[@class='picture']")
+    public List<WebElement> listPictureProduct;
+
     @FindBy(xpath = "//div[@class='card']//h5[@class='product-title']/a[text()]")
-    public List<WebElement> nameProduct;
+    public List<WebElement> listNameProduct;
 
     @FindBy(xpath = "//div[@class='card']//div[@class='description'][text()]")
-    public List<WebElement> descriptionProduct;
+    public List<WebElement> listDescriptionProduct;
 
 }

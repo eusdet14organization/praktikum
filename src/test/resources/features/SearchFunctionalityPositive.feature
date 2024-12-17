@@ -1,8 +1,11 @@
 
 Feature: Search Functionality
-  @ignored
-  Scenario Outline:Search for products via the main page  search for products via search page
+
+  Background:
     Given The user is on the main page
+
+  @ignored
+  Scenario Outline:Search for products using the search field on the main page
     When The user enters the name or part the name of the '<Product>' in the search field  auf Home Page.
     Then The user sees the '<Product>' he was looking for.
     Examples:
@@ -12,7 +15,6 @@ Feature: Search Functionality
 
   @ignored
   Scenario Outline:Search for products via search page
-    Given The user is on the main page
     And The user go to Search Page
     When The user enters the name or part the name of the '<Product>' in the search field.
     And The user click Search
@@ -24,7 +26,6 @@ Feature: Search Functionality
 
   @ignored
   Scenario Outline:Advanced search for products by description
-    Given The user is on the main page
     And The user go to Search Page
     When The user enters the name or part the name of the '<Description>' in the search field.
     And The user marks the field "Erweiterte Suche"
@@ -37,7 +38,6 @@ Feature: Search Functionality
 
   @ignored
   Scenario Outline:Advanced search for products by Category
-    Given The user is on the main page
     And The user go to Search Page
     When The user enters the name or part the name of the '<Product>' in the search field.
     And The user marks the field "Erweiterte Suche"
@@ -49,9 +49,8 @@ Feature: Search Functionality
       | Kaiser Flowable Composite |Restorative Produkte >> Composite|
 
 
-
+  @ignored
   Scenario Outline:Advanced search for products by Category
-    Given The user is on the main page
     And The user go to Search Page
     When The user enters the name or part the name of the '<Product>' in the search field.
     And The user marks the field "Erweiterte Suche"
@@ -63,3 +62,12 @@ Feature: Search Functionality
       | Product |Category                         |
       | Kaiser  |Restorative Produkte >> Composite|
 
+  Scenario Outline:Transition to the product page from search results from the main page
+    When The user enters the name or part the name of the '<Product>' in the search field  auf Home Page.
+    And The user goes to the product page.
+    Then The user sees the page of the selected '<Product>'.
+
+    Examples:
+      | Product                                                 |
+      | Kaiser Flowable Composite                               |
+      | Kaiser Flowable Composite Medium 2 X 2g Syringe-Spritze |
