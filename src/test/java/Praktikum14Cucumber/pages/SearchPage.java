@@ -16,17 +16,8 @@ public class SearchPage extends BasePage {
     @FindBy(xpath = "//input[@class='search-text form-control']")
     public WebElement fieldInputSearch;
 
-    @FindBy(xpath = "//label[@class='custom-control-label'][text()='Erweiterte Suche']")
-    public WebElement advancedSearchButton;
-
     @FindBy(xpath = "//select[@class='form-control custom-select']")
     public WebElement selectCategorySearch;
-
-    @FindBy(xpath = "//label[@class='custom-control-label'][text()='Automatically search sub categories']")
-    public WebElement subCategoriesSearchButton;
-
-    @FindBy(xpath = "//label[@class='custom-control-label'][text()='Search In product descriptions']")
-    public WebElement descriptionsSearchButton;
 
     public WebElement getAdvancedSearchMenu(String nameAdvancedOption) {
         return getDriver().findElement(By.xpath(
