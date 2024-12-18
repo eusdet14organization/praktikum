@@ -13,10 +13,11 @@ Feature: Registration Page Accessibility
     And The name of registration form should be displayed
     And The form should include the following fields:
       | Field Name        |
-      | Username          |
-      | Email             |
+      | FirstName         |
+      | LastName         |
+      | Email            |
       | Password          |
-      | Confirm Password  |
+      | ConfirmPassword  |
     And The form should include a "Registierung" button
 
 
