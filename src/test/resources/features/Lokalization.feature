@@ -6,5 +6,11 @@ So that I can view content in English or German and ensure language persistence
 Background:
 Given The user is on the main page
 
-Scenario: Verify availability of two Languages
-Then I should see options to select English and German
+  Scenario Outline: Verify availability of two Languages
+    Then I should see options to '<Language>'.
+    Examples:
+      | Language |
+      | German   |
+      | English  |
+
+
