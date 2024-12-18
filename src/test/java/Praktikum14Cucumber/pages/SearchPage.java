@@ -27,6 +27,9 @@ public class SearchPage extends BasePage {
     @FindBy(xpath = "//i[@class='czi-search mr-1']")
     public WebElement searchButton;
 
+    @FindBy(xpath = "//div[@class='text-center p-3 mt-5'][text()]")
+    public WebElement messageNoProducts;
+
     @FindBy(xpath = "//div[@class='card']")
     public List<WebElement> listProduct;
 
