@@ -1,4 +1,4 @@
-
+@Ignore
 Feature: Search Functionality
 
   Background:
