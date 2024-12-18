@@ -133,7 +133,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-plugin-version}</version>
                 <configuration>
-                    <rerunFailingTestsCount>2</rerunFailingTestsCount>
+                    <rerunFailingTestsCount>1</rerunFailingTestsCount>
                     <includes>
                         <include>**/RunPraktikum14Test.java</include>
                     </includes>
