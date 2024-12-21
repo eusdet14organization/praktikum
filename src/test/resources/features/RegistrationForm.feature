@@ -3,7 +3,7 @@ Feature: Registration Form
 
   Background:
     Given The user is on the main page
-  @ignored
+
   Scenario: Registration Page Accessibility
   Verify that clicking "Register" opens the registration form page
   Open the account login page through the main menu
@@ -17,7 +17,7 @@ Feature: Registration Form
       | E-Mail :              |
       | Passwort :            |
     And The form should include a Register button
-  @ignored
+
   Scenario: Registration Page Accessibility
   Verify that clicking "Register" opens the registration form page
   Open the account login page via the "Hallo Konto" menu item
@@ -31,7 +31,7 @@ Feature: Registration Form
       | E-Mail :              |
       | Passwort :            |
     And The form should include a Register button
-@ignored
+
   Scenario: Registration Page Accessibility
   Verify that clicking "Register" opens the registration form page
   Open the account login page via the "Mein Konto" menu item in the footer
