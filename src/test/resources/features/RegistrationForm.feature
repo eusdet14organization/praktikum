@@ -45,3 +45,19 @@ Feature: Registration Form
       | E-Mail :              |
       | Passwort :            |
     And The form should include a Register button
+
+  Scenario: The user can register by entering the correct data
+    And The user click on the "Mein Konto" in the main menu
+    And The user click on the Register button
+    When The user enters correct personal data
+    And The user clicks the Register button
+    Then The user sees a message about successful registration
+
+  Scenario: The user can register by entering the correct data
+    And The user click on the "Mein Konto" in the main menu
+    And The user click on the Register button
+    And The user enters correct personal data
+    And The user clicks the Register button
+    And The user sees a message about successful registration
+    When The user clicks the "Weiter" button to access their account
+    Then The user account page opens

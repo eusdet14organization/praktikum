@@ -14,10 +14,10 @@ public class RegistrationFormPage extends BasePage {
     @FindBy(xpath = "//*[@id='gender']")
     public WebElement gender;
 
-    @FindBy(xpath = "//*[@id='gender-male']")
+    @FindBy(xpath = "//label[@class='custom-control-label' and @for='gender-male']")
     public WebElement genderMale;
 
-    @FindBy(xpath = "//*[@id='gender-female']")
+    @FindBy(xpath = "//label[@class='custom-control-label' and @for='gender-female']")
     public WebElement genderFemale;
 
     @FindBy(xpath = "//*[@id='FirstName']")
