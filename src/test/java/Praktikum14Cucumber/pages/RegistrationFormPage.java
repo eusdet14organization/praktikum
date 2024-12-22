@@ -57,19 +57,19 @@ public class RegistrationFormPage extends BasePage {
     public List<WebElement> fieldNames;
 
     @FindBy (xpath = "//*[@id='FirstName-error']")
-    public List<WebElement> fieldValidationErrorFirstName;
+    public WebElement fieldValidationErrorFirstName;
 
     @FindBy (xpath = "//*[@id='LastName-error']")
-    public List<WebElement> fieldValidationErrorLastName;
+    public WebElement fieldValidationErrorLastName;
 
     @FindBy (xpath = "//*[@id='Email-error']")
-    public List<WebElement> fieldValidationErrorEmail;
+    public WebElement fieldValidationErrorEmail;
 
     @FindBy (xpath = "//*[@id='Password-error']")
-    public List<WebElement> fieldValidationErrorPassword;
+    public WebElement fieldValidationErrorPassword;
 
     @FindBy (xpath = "//*[@id='ConfirmPassword-error']")
-    public List<WebElement> fieldValidationErrorConfirmPassword;
+    public WebElement fieldValidationErrorConfirmPassword;
 
     public void verifyFormFields(List<String> namesOfField) {
         List<String> actualFieldNames = fieldNames.stream()

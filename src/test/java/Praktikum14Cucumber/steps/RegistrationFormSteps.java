@@ -133,6 +133,15 @@ public class RegistrationFormSteps {
 
     @Then("The user should see an alarm messages against all mandatory fields")
     public void theUserShouldSeeAnAlarmMessagesAgainstAllMandatoryFields() {
-
+        assertEquals(registrationFormPage.fieldValidationErrorFirstName.getText(),
+                ConfigurationReader.get("messageRequiredFirstNameField"));
+        assertEquals(registrationFormPage.fieldValidationErrorLastName.getText(),
+                ConfigurationReader.get("messageRequiredLastNameField"));
+        assertEquals(registrationFormPage.fieldValidationErrorEmail.getText(),
+                ConfigurationReader.get("messageRequiredAdressField"));
+        assertEquals(registrationFormPage.fieldValidationErrorPassword.getText(),
+                ConfigurationReader.get("messageRequiredPasswordField"));
+        assertEquals(registrationFormPage.fieldValidationErrorConfirmPassword.getText(),
+                ConfigurationReader.get("messageRequiredPasswordField"));
     }
 }
