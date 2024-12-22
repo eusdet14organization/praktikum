@@ -220,3 +220,22 @@ Feature: Registration Form
       |password1234|
       |aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789!@#$%^&*()_-+=<>?/~/abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890[]{};:'",.<>|
       |AgkfRI45 fg90gndd|
+
+#Different values in the ‘Password’ field and the ‘Repeat password’ field
+#Partial match
+#Different registers
+#Special characters
+#Adding extra spaces
+  Scenario Outline: Alarm message is displayed to the user when attempting to register with incorrect data in the confirm password field
+    And The user click on the "Mein Konto" in the main menu
+    And The user click on the Register button
+    When The User has entered a '<valid password>' and '<incorrect data>' in confirmation password field
+    And The user clicks the Register button
+    Then The user should see an alarm message next to the incorrectly filled in confirm password field
+    Examples:
+      |valid password| incorrect data                   |
+      |password|123456987Test6978|
+      |password|123456987Tests|
+      |password|123456987test|
+      |password!|123456987Test@|
+      |password| 123456987Test|

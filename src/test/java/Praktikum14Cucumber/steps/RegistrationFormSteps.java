@@ -130,4 +130,9 @@ public class RegistrationFormSteps {
         assertEquals(TestContext.getDriver().getCurrentUrl(),
                 ConfigurationReader.get("accountUrl"));
     }
+
+    @Then("The user should see an alarm messages against all mandatory fields")
+    public void theUserShouldSeeAnAlarmMessagesAgainstAllMandatoryFields() {
+
+    }
 }
