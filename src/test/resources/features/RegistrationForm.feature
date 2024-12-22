@@ -85,6 +85,7 @@ Feature: Registration Form
     Then The user should see an alarm message next to the incorrectly filled in first name field
     Examples:
       | incorrect data                   |
+      ||
       | |
       |A|
       |d|
@@ -115,6 +116,7 @@ Feature: Registration Form
     Then The user should see an alarm message next to the incorrectly filled in last name field
     Examples:
       | incorrect data                   |
+      ||
       | |
       |A|
       |d|
@@ -138,32 +140,65 @@ Feature: Registration Form
       |漢字|
 
 #Empty email field
+  @ignored
+  Scenario Outline: Alarm message is displayed to the user when attempting to register with empty email field
+    And The user click on the "Mein Konto" in the main menu
+    And The user click on the Register button
+    When The user tries to enter '<incorrect data>' in the Email field
+    And The user clicks the Register button
+    Then The user should see an alarm message v1 next to the incorrectly filled in email field
+    Examples:
+      | incorrect data|
+      ||
+      | |
+
 #Missing @ symbol
 #Missing domain
 #Use of spaces
-#Incorrect domain suffixes
-#Missing dots
-#Use of characters not supported in email
-#Very long email (usually 320 characters)
 #Lack of local part
-#Domain parts in the wrong order
   @ignored
   Scenario Outline: Alarm message is displayed to the user when attempting to register with incorrect data in the email field
     And The user click on the "Mein Konto" in the main menu
     And The user click on the Register button
     When The user tries to enter '<incorrect data>' in the email field
-    And The user clicks the Register button
-    Then The user should see an alarm message next to the incorrectly filled in email field
+    Then The user should see an alarm message v2 next to the incorrectly filled in email field
     Examples:
       | incorrect data                   |
-      |andy.rodrigestestgmail.com|
+      |andy.rodrigestest.gmail.com|
       |andy.rodrigestest@|
       |andy rodrigestest@gmail.com|
-      |andy.rodrigestest@gmail.grass|
-      |andy..rodrigestest@gmail.com|
-      |andy.rodrigestest!@gmail.com|
+      |@gmail.com|
+
+#Incorrect domain suffixes - проходит регистрация
+#Use of characters not supported in email - проходит регистрация
+#Very long email (usually 320 characters)
+#Domain parts in the wrong order
+  @ignored
+  Scenario Outline: Alarm message is displayed to the user when attempting to register with incorrect data in the email field
+    And The user click on the "Mein Konto" in the main menu
+    And The user click on the Register button
+    When The user tries to enter '<incorrect data>' in the Email field
+    And The user clicks the Register button
+    Then The user should see an alarm message v3 next to the incorrectly filled in email field
+    Examples:
+      | incorrect data                   |
+      |andy.rodrigestest@gmail.grassssss|
+      |andy.rodrigestest!!!!@gmail.com|
       |abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij@gmail.com|
       |com.gmail@rodrigestest.andy|
+
+#Missing dots
+  @ignored
+  Scenario Outline: Alarm message is displayed to the user when attempting to register with incorrect data in the email field
+    And The user click on the "Mein Konto" in the main menu
+    And The user click on the Register button
+    When The user tries to enter '<incorrect data>' in the Email field
+    And The user clicks the Register button
+    Then The user should see an alarm message v4 next to the incorrectly filled in email field
+    Examples:
+      | incorrect data                   |
+      |andy..rodrigestest@gmail.com|
+      |andy.rodrigestest@gmailcom|
 
 #Empty password field
 #The password is shorter than the minimum allowed length (e.g. less than 8 characters).
@@ -172,7 +207,7 @@ Feature: Registration Form
 #Very simple password
 #The password is too long (exceeds the maximum limit, e.g. 128 characters)
 #Includes spaces
-  @ignored
+
   Scenario Outline: Alarm message is displayed to the user when attempting to register with incorrect data in the password field
     And The user click on the "Mein Konto" in the main menu
     And The user click on the Register button
