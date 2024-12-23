@@ -13,9 +13,9 @@ Feature:ShoppingCartFunctionality
     Then The user goes to the Cart page.
 
   Scenario:
-    When The user clicks on the word "Warekorb" in the top menu of the page.
+    When The user clicks on the word "Warenkorb" in the top menu of the page.
     Then The user goes to the Cart page.
 
   Scenario:
-    When The user clicks on the word "Warekorb" in the bottom menu of the page.
+    When The user clicks on the word "Warenkorb" in the bottom menu of the page.
     Then The user goes to the Cart page.
