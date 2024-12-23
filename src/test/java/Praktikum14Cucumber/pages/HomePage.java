@@ -66,7 +66,7 @@ public class HomePage extends BasePage {
 
     //CartMenu
     @FindBy(xpath = "//div[@id='flyout-cart']/a[contains(@class, 'navbar-tool-icon-box')]")
-    public WebElement dropDownCart;
+    public WebElement imagesCart;
 
     @FindBy(xpath = "//div[@id='flyout-cart']/a[contains(@class, 'navbar-tool-text')]")
     public WebElement toCartButton;

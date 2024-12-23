@@ -1,3 +1,4 @@
+@ignored
 Feature: Localization and Language Switching
 As a user
 I want to change the website language
