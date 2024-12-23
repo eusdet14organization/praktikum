@@ -86,7 +86,7 @@ Feature: Registration Form
     Examples:
       | incorrect data                   |
       ||
-      | |
+      |SP|
       |A|
       |d|
       |Ab|
@@ -117,7 +117,7 @@ Feature: Registration Form
     Examples:
       | incorrect data                   |
       ||
-      | |
+      |SP|
       |A|
       |d|
       |Ab|
@@ -140,7 +140,7 @@ Feature: Registration Form
       |漢字|
 
 #Empty email field
-  @ignored
+
   Scenario Outline: Alarm message is displayed to the user when attempting to register with empty email field
     And The user click on the "Mein Konto" in the main menu
     And The user click on the Register button
@@ -150,7 +150,7 @@ Feature: Registration Form
     Examples:
       | incorrect data| alarm message|
       ||messageRequiredAdressField|
-      | |messageRequiredAdressField|
+      |SP|messageRequiredAdressField|
 
 #Missing @ symbol
 #Missing domain
@@ -217,7 +217,7 @@ Feature: Registration Form
     Examples:
       | incorrect data                   |alarm message|
       ||messageRequiredPasswordField|
-      | |messageRequiredPasswordField|
+      |SP|messageRequiredPasswordField|
       |gh|messageIncorrectPasswordField|
       |ghj32|messageIncorrectPasswordField|
       |ghjokr|messageIncorrectPasswordField|
@@ -239,11 +239,12 @@ Feature: Registration Form
     And The user click on the Register button
     When The User has entered a '<valid password>' and '<incorrect data>' in confirmation password field
     And The user clicks the Register button
-    Then The user should see an alarm message next to the incorrectly filled in confirm password field
+    Then The user should see an '<alarm message>' next to the incorrectly filled in confirm password field
     Examples:
-      |valid password| incorrect data                   |
-      |password|123456987Test6978|
-      |password|123456987Tests|
-      |password|123456987test|
-      |password!|123456987Test@|
-      |password| 123456987Test|
+      |valid password| incorrect data                   |alarm message|
+      #|password||messageRequiredPasswordField|
+      #|password|123456987Test6978|messageIncorrectConfirmPasswordField|
+      #|password|123456987Tests|messageIncorrectConfirmPasswordField|
+      #|password|123456987test|messageIncorrectConfirmPasswordField|
+      #|password!|123456987Test@|messageIncorrectConfirmPasswordField|
+      #|password|123456987 Test|messageIncorrectConfirmPasswordField|

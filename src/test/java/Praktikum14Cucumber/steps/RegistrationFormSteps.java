@@ -114,6 +114,9 @@ public class RegistrationFormSteps {
 
     @When("The user tries to enter {string} in the first name field")
     public void theUserTriesToEnterIncorrectDataInTheFirstNameField(String incorrectDataFirstName) throws InterruptedException {
+        if ("SP".equals(incorrectDataFirstName)) {
+            incorrectDataFirstName = " ";
+        }
     registrationFormPage.enteringIncorrectDataInTheFirstNameField(incorrectDataFirstName);
     }
 
@@ -125,6 +128,9 @@ public class RegistrationFormSteps {
 
     @When("The user tries to enter {string} in the last name field")
     public void theUserTriesToEnterIncorrectDataInTheLastNameField(String incorrectDataLastName) throws InterruptedException {
+        if ("SP".equals(incorrectDataLastName)) {
+            incorrectDataLastName = " ";
+        }
         registrationFormPage.enteringIncorrectDataInTheLastNameField(incorrectDataLastName);
     }
 
@@ -136,6 +142,9 @@ public class RegistrationFormSteps {
 
     @When("The user tries to enter {string} in the Email field")
     public void theUserFillsInAllFieldsExceptEmail(String incorrectEmail) throws InterruptedException {
+        if ("SP".equals(incorrectEmail)) {
+            incorrectEmail = " ";
+        }
         registrationFormPage.enteringIncorrectEmailField(incorrectEmail);
     }
 
@@ -159,11 +168,25 @@ public class RegistrationFormSteps {
 
     @When("The user tries to enter {string} in the password field")
     public void theUserTriesToEnterIncorrectDataInThePasswordField(String incorrectPassword) throws InterruptedException {
+        if ("SP".equals(incorrectPassword)) {
+            incorrectPassword = " ";
+        }
         registrationFormPage.enteringIncorrectPasswordField(incorrectPassword);
     }
 
     @Then("The user should see an {string} next to the incorrectly filled in password field")
     public void theUserShouldSeeAnAlarmMessageNextToTheIncorrectlyFilledInPasswordField(String correctAlarmMassage) {
         assertTrue(registrationFormPage.fieldValidationErrorPassword.getText().contains(ConfigurationReader.get(correctAlarmMassage)));
+    }
+
+    @When("The User has entered a {string} and {string} in confirmation password field")
+    public void theUserHasEnteredAValidPasswordAndIncorrectDataInConfirmationPasswordField(String correctPassword, String incorrectConfirmPassword) throws InterruptedException {
+        registrationFormPage.enteringIncorrectConfirmPasswordField(correctPassword, incorrectConfirmPassword);
+    }
+
+    @Then("The user should see an {string} next to the incorrectly filled in confirm password field")
+    public void theUserShouldSeeAnAlarmMessageNextToTheIncorrectlyFilledInConfirmPasswordField(String correctAlarmMassage) {
+        assertEquals(registrationFormPage.fieldValidationErrorConfirmPassword.getText(),
+                ConfigurationReader.get(correctAlarmMassage));
     }
 }

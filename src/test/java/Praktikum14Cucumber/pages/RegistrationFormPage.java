@@ -1,6 +1,7 @@
 package Praktikum14Cucumber.pages;
 
 import Praktikum14Cucumber.dto.User;
+import Praktikum14Cucumber.utils.ConfigurationReader;
 import Praktikum14Cucumber.utils.DataHelper;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -196,6 +197,29 @@ public class RegistrationFormPage extends BasePage {
         }
         confirmPassword.sendKeys(incorrectPassword);
         Thread.sleep(500);
+    }
+
+    public void enteringIncorrectConfirmPasswordField (String correctPassword, String incorrectConfirmPassword) throws InterruptedException {
+        User newTestUser = DataHelper.createNewTestUser();
+        genderMale.click();
+        firstName.sendKeys(newTestUser.getFirstName());
+        Thread.sleep(600);
+        for (char ch : newTestUser.getLastName().toCharArray()) {
+            lastName.sendKeys(String.valueOf(ch));
+            Thread.sleep(100);
+        }
+        dateOfBirthSelection();
+
+        eMail.sendKeys(newTestUser.getEmail());
+        Thread.sleep(700);
+        company.sendKeys(newTestUser.getCompany());
+        Thread.sleep(500);
+        password.sendKeys(ConfigurationReader.get(correctPassword));
+        Thread.sleep(300);
+        for (char ch : incorrectConfirmPassword.toCharArray()) {
+            confirmPassword.sendKeys(String.valueOf(ch));
+            Thread.sleep(100);
+        }
     }
 
     public void dateOfBirthSelection (){
