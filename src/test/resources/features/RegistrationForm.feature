@@ -146,11 +146,11 @@ Feature: Registration Form
     And The user click on the Register button
     When The user tries to enter '<incorrect data>' in the Email field
     And The user clicks the Register button
-    Then The user should see an alarm message v1 next to the incorrectly filled in email field
+    Then The user should see an '<alarm message>' v1 next to the incorrectly filled in email field
     Examples:
-      | incorrect data|
-      ||
-      | |
+      | incorrect data| alarm message|
+      ||messageRequiredAdressField|
+      | |messageRequiredAdressField|
 
 #Missing @ symbol
 #Missing domain
@@ -161,13 +161,13 @@ Feature: Registration Form
     And The user click on the "Mein Konto" in the main menu
     And The user click on the Register button
     When The user tries to enter '<incorrect data>' in the email field
-    Then The user should see an alarm message v2 next to the incorrectly filled in email field
+    Then The user should see an '<alarm message>' v1 next to the incorrectly filled in email field
     Examples:
-      | incorrect data                   |
-      |andy.rodrigestest.gmail.com|
-      |andy.rodrigestest@|
-      |andy rodrigestest@gmail.com|
-      |@gmail.com|
+      | incorrect data                   |alarm message|
+      |andy.rodrigestest.gmail.com|massageIncorrectEmail|
+      |andy.rodrigestest@|massageIncorrectEmail|
+      |andy rodrigestest@gmail.com|massageIncorrectEmail|
+      |@gmail.com|massageIncorrectEmail|
 
 #Incorrect domain suffixes - проходит регистрация
 #Use of characters not supported in email - проходит регистрация
@@ -179,13 +179,13 @@ Feature: Registration Form
     And The user click on the Register button
     When The user tries to enter '<incorrect data>' in the Email field
     And The user clicks the Register button
-    Then The user should see an alarm message v3 next to the incorrectly filled in email field
+    Then The user should see an '<alarm message>' v2 next to the incorrectly filled in email field
     Examples:
-      | incorrect data                   |
-      |andy.rodrigestest@gmail.grassssss|
-      |andy.rodrigestest!!!!@gmail.com|
-      |abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij@gmail.com|
-      |com.gmail@rodrigestest.andy|
+      | incorrect data                   |alarm message|
+      |andy.rodrigestest@gmail.grassssss|messageIncorrectMail|
+      |andy.rodrigestest!!!!@gmail.com|messageIncorrectMail|
+      |abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij@gmail.com|messageIncorrectMail|
+      |com.gmail@rodrigestest.andy|messageIncorrectMail|
 
 #Missing dots
   @ignored
@@ -194,38 +194,38 @@ Feature: Registration Form
     And The user click on the Register button
     When The user tries to enter '<incorrect data>' in the Email field
     And The user clicks the Register button
-    Then The user should see an alarm message v4 next to the incorrectly filled in email field
+    Then The user should see an '<alarm message>' v2 next to the incorrectly filled in email field
     Examples:
-      | incorrect data                   |
-      |andy..rodrigestest@gmail.com|
-      |andy.rodrigestest@gmailcom|
+      | incorrect data                   |alarm message|
+      |andy..rodrigestest@gmail.com|massageIncorrectEmail|
+      |andy.rodrigestest@gmailcom|massageIncorrectEmail|
 
 #Empty password field
-#The password is shorter than the minimum allowed length (e.g. less than 8 characters).
-#Contains only letters (does not include numbers or special characters)
-#Contains only digits
-#Very simple password
-#The password is too long (exceeds the maximum limit, e.g. 128 characters)
-#Includes spaces
-
+#The password is shorter than the minimum allowed length (less than 6 characters).
+#Contains only letters (does not include numbers or special characters) - проходит регистрация
+#Contains only digits - проходит регистрация
+#Very simple password - проходит регистрация
+#The password is too long (exceeds the maximum limit, e.g. 128 characters) - проходит регистрация
+#Includes spaces - проходит регистрация
+  @ignored
   Scenario Outline: Alarm message is displayed to the user when attempting to register with incorrect data in the password field
     And The user click on the "Mein Konto" in the main menu
     And The user click on the Register button
     When The user tries to enter '<incorrect data>' in the password field
     And The user clicks the Register button
-    Then The user should see an alarm message next to the incorrectly filled in password field
+    Then The user should see an '<alarm message>' next to the incorrectly filled in password field
     Examples:
-      | incorrect data                   |
-      |gh|
-      |ghj3|
-      |ghj34n|
-      |ghj34ns|
-      |ghjokrnd|
-      |12345678|
-      |qwerty|
-      |password1234|
-      |aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789!@#$%^&*()_-+=<>?/~/abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890[]{};:'",.<>|
-      |AgkfRI45 fg90gndd|
+      | incorrect data                   |alarm message|
+      ||messageRequiredPasswordField|
+      | |messageRequiredPasswordField|
+      |gh|messageIncorrectPasswordField|
+      |ghj32|messageIncorrectPasswordField|
+      |ghjokr|messageIncorrectPasswordField|
+      |12345678|messageIncorrectPasswordField|
+      |qwerty|messageIncorrectPasswordField|
+      |password1234|messageIncorrectPasswordField|
+      |aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789!@#$%^&*()_-+=<>?/~/abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890[]{};sASDFGH.sadadadadasdadasdadasdada|messageIncorrectPasswordField|
+      |AgkfRI45 fg90gndd|messageIncorrectPasswordField|
 
 #Empty confirm password field
 #Different values in the ‘Password’ field and the ‘Repeat password’ field

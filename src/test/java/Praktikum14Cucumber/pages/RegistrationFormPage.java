@@ -175,6 +175,29 @@ public class RegistrationFormPage extends BasePage {
         Thread.sleep(500);
     }
 
+    public void enteringIncorrectPasswordField (String incorrectPassword) throws InterruptedException {
+        User newTestUser = DataHelper.createNewTestUser();
+        genderMale.click();
+        firstName.sendKeys(newTestUser.getFirstName());
+        Thread.sleep(600);
+        for (char ch : newTestUser.getLastName().toCharArray()) {
+            lastName.sendKeys(String.valueOf(ch));
+            Thread.sleep(100);
+        }
+        dateOfBirthSelection();
+
+        eMail.sendKeys(newTestUser.getEmail());
+        Thread.sleep(700);
+        company.sendKeys(newTestUser.getCompany());
+        Thread.sleep(500);
+        for (char ch : incorrectPassword.toCharArray()) {
+            password.sendKeys(String.valueOf(ch));
+            Thread.sleep(100);
+        }
+        confirmPassword.sendKeys(incorrectPassword);
+        Thread.sleep(500);
+    }
+
     public void dateOfBirthSelection (){
         Random random = new Random();
         Select selectDay = new Select(dateOfBirthDay);

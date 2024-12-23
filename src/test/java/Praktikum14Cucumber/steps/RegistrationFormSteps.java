@@ -145,27 +145,25 @@ public class RegistrationFormSteps {
        registrationFormPage.password.click();
     }
 
-    @Then("The user should see an alarm message v1 next to the incorrectly filled in email field")
-    public void theUserShouldSeeAnAlarmMessageV1NextToTheIncorrectlyFilledInEmailField() {
+    @Then("The user should see an {string} v1 next to the incorrectly filled in email field")
+    public void theUserShouldSeeAnAlarmMessageV1NextToTheIncorrectlyFilledInEmailField(String correctAlarmMassage) {
         assertEquals(registrationFormPage.fieldValidationErrorEmail.getText(),
-                ConfigurationReader.get("messageRequiredAdressField"));
+                ConfigurationReader.get(correctAlarmMassage));
     }
 
-    @Then("The user should see an alarm message v2 next to the incorrectly filled in email field")
-    public void theUserShouldSeeAnAlarmMessageV2NextToTheIncorrectlyFilledInEmailField() {
-        assertEquals(registrationFormPage.fieldValidationErrorEmail.getText(),
-                ConfigurationReader.get("massageIncorrectEmail"));
-    }
-
-    @Then("The user should see an alarm message v3 next to the incorrectly filled in email field")
-    public void theUserShouldSeeAnAlarmMessageV3NextToTheIncorrectlyFilledInEmailField() {
+    @Then("The user should see an {string} v2 next to the incorrectly filled in email field")
+    public void theUserShouldSeeAnAlarmMessageV2NextToTheIncorrectlyFilledInEmailField(String correctAlarmMassage) {
         assertEquals(registrationFormPage.fieldAlarmMessage.getText(),
-                ConfigurationReader.get("messageIncorrectMail"));
+                ConfigurationReader.get(correctAlarmMassage));
     }
 
-    @Then("The user should see an alarm message v4 next to the incorrectly filled in email field")
-    public void theUserShouldSeeAnAlarmMessageV4NextToTheIncorrectlyFilledInEmailField() {
-        assertEquals(registrationFormPage.fieldAlarmMessage.getText(),
-                ConfigurationReader.get("massageIncorrectEmail"));
+    @When("The user tries to enter {string} in the password field")
+    public void theUserTriesToEnterIncorrectDataInThePasswordField(String incorrectPassword) throws InterruptedException {
+        registrationFormPage.enteringIncorrectPasswordField(incorrectPassword);
+    }
+
+    @Then("The user should see an {string} next to the incorrectly filled in password field")
+    public void theUserShouldSeeAnAlarmMessageNextToTheIncorrectlyFilledInPasswordField(String correctAlarmMassage) {
+        assertTrue(registrationFormPage.fieldValidationErrorPassword.getText().contains(ConfigurationReader.get(correctAlarmMassage)));
     }
 }
