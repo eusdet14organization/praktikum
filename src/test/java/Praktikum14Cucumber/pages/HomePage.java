@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 import static Praktikum14Cucumber.context.TestContext.getDriver;
 
 public class HomePage extends BasePage {
@@ -27,13 +29,7 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'ml-n3')]")
     public WebElement loginUser;
 
-    @FindBy(xpath = "//div[@id='flyout-cart']/a[contains(@class, 'navbar-tool-icon-box')]")
-    public WebElement dropDownCart;
-
-    @FindBy(xpath = "//div[@id='flyout-cart']/a[contains(@class, 'navbar-tool-text')]")
-    public WebElement toCartButton;
-
-    //Navigation Menu
+   //Navigation Menu
 
     public WebElement getMeinMenu(String nameMenu) {
         return getDriver().findElement(By.xpath(
@@ -68,14 +64,27 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//input[@id='newsletter-subscribe-button']")
     public WebElement newsletterSubscribeButton;
 
+    //CartMenu
+    @FindBy(xpath = "//div[@id='flyout-cart']/a[contains(@class, 'navbar-tool-icon-box')]")
+    public WebElement dropDownCart;
 
+    @FindBy(xpath = "//div[@id='flyout-cart']/a[contains(@class, 'navbar-tool-text')]")
+    public WebElement toCartButton;
 
+    @FindBy(xpath = "//span[@class='navbar-tool-label'][text()]")
+    public WebElement amountProductInCart;
 
+    @FindBy(xpath = "//a[@class='navbar-tool-text'][text()]")
+    public WebElement sumProductInCart;
 
+    @FindBy(xpath = "//a[@class='btn btn-success btn-sm'][text()='Zum Warenkorb']")
+    public WebElement dropDownMenuGoToCartButton;
 
+    @FindBy(xpath = "//span[@class='text-accent font-size-base ml-1'][text()]")
+    public WebElement getDropDownMenuSum;
 
-
-
+    @FindBy(xpath = "//a[@class='d-block mr-2']/img[@alt]")
+    public List<WebElement> nameProductInCart;
 
 
 }
