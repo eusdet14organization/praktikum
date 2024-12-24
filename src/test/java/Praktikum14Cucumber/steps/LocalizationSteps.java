@@ -32,7 +32,6 @@ public class LocalizationSteps {
         assertTrue(homePage.switchLanguageDE.isDisplayed(), "German flag is not displayed");
     }
 
-
     @Then("the Tooltip {string} is displayed below the English  language button")
     public void theTooltipEnIsDisplayedBelowTheEnglishLanguageButton() {
         assertEquals(localizationPage.englishLanguageTitle.getAttribute("title"), "EN", "Tooltip text is not correct");
@@ -57,7 +56,7 @@ public class LocalizationSteps {
         }
     }
 
-    @When("The user switch the {string} to:")
+    @When("The user switch the {string} to")
     public void theUserSwitchTheLanguageTo(String language) {
         if (language.equals("DE")) {
             homePage.switchLanguageDE.click();
@@ -71,7 +70,7 @@ public class LocalizationSteps {
         TestContext.getDriver().navigate().refresh();
     }
 
-    @Then("the website should display content {string} in:")
+    @Then("the website should display content {string} in")
     public void theWebsiteShouldDisplayContentTextIn(String text) {
         if (text.equals("Startseite")) {
             assertEquals(localizationPage.searchField.getAttribute("placeholder"), "Shop durchsuchen", "Site text is not in German");
@@ -88,7 +87,6 @@ public class LocalizationSteps {
 
     @And("The user moves the cursor over the navigation menu")
     public void theUserMovesTheCursorOverTheNavigationMenu() {
-        //homePage.menuRestorativeProdukte.click();
         TestContext.getActions().moveToElement(homePage.menuRestorativeProdukte).perform();
     }
 
@@ -97,7 +95,10 @@ public class LocalizationSteps {
         homePage.getDropMenuRestorativeProdukte(nameDropMenu).click();
     }
 
-    //    @Then("the website should display content in German")
-    //    public void theWebsiteShouldDisplayContentInGerman() {
-    //  assertEquals();
+    @Then("the website should display content in German")
+    public void theWebsiteShouldDisplayContentInGerman() {
+      assertEquals(localizationPage.nameOfHeaderOfCategoryPage.getText(),"Kategorien","This name is not in German");
+    }
+
+
 }

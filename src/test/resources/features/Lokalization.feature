@@ -18,9 +18,9 @@ Feature: Language Switcher
 
 
   Scenario Outline: Verify language persistence after reload
-    When The user switch the '<language>' to:
+    When The user switch the '<language>' to
     And The user reload the Page
-    Then the website should display content '<Text>' in:
+    Then the website should display content '<Text>' in
     Examples:
       | language | Text       |
       | DE       | Startseite |
@@ -30,7 +30,7 @@ Feature: Language Switcher
     When The user switch the language to German
     And The user moves the cursor over the navigation menu
     And The user click on the "Composite"
-    #Then the website should display content in German
+    Then the website should display content in German
 
 
 
