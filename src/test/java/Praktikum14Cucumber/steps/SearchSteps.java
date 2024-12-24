@@ -21,8 +21,8 @@ public class SearchSteps {
     SearchPageHelp searchPageHelp = new SearchPageHelp();
     ProductPage productPage = new ProductPage();
 
-    @When("The user enters the name or part the name of the {string} in the search field  auf Home Page.")
-    public void theUserEntersTheNameOrPartTheNameOfTheProductInTheSearchFieldAufHomePage(String nameProduct) {
+    @When("The user enters the name or part the name of the {string} in the search field  auf Top Menu.")
+    public void theUserEntersTheNameOrPartTheNameOfTheProductInTheSearchFieldAufTopMenu(String nameProduct) {
 
         homePage.fieldSearch.sendKeys(nameProduct);
         searchPage.searchNavMenuButton.click();

@@ -5,7 +5,7 @@ Feature: Search Functionality
     Given The user is on the main page
 
   Scenario Outline:Search for products using the search field on the Home page
-    When The user enters the name or part the name of the '<Product>' in the search field  auf Home Page.
+    When The user enters the name or part the name of the '<Product>' in the search field  auf Top Menu.
     Then The user sees the '<Product>' he was looking for.
     Examples:
       | Product                   |
@@ -75,7 +75,7 @@ Feature: Search Functionality
 
 
   Scenario Outline:Transition to the product page from search results from the Home page
-    When The user enters the name or part the name of the '<Product>' in the search field  auf Home Page.
+    When The user enters the name or part the name of the '<Product>' in the search field  auf Top Menu.
     And The user goes to the product page.
     Then The user sees the page of the selected '<Product>'.
 
@@ -103,7 +103,7 @@ Feature: Search Functionality
 
 
   Scenario Outline:Entering a product that is not on the site in the search field on the Home page
-    When The user enters the name or part the name of the '<BadProduct>' in the search field  auf Home Page.
+    When The user enters the name or part the name of the '<BadProduct>' in the search field  auf Top Menu.
     Then The user sees the "messageNoProducts".
     Examples:
       | BadProduct    |
