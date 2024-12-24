@@ -1,7 +1,6 @@
 package Praktikum14Cucumber.steps;
 
 import Praktikum14Cucumber.context.TestContext;
-import Praktikum14Cucumber.pages.ContactPage;
 import Praktikum14Cucumber.pages.HomePage;
 import Praktikum14Cucumber.pages.LocalizationPage;
 import io.cucumber.java.en.And;
