@@ -1,22 +1,16 @@
 package Praktikum14Cucumber.steps;
 
 import Praktikum14Cucumber.context.TestContext;
-import Praktikum14Cucumber.dto.User;
 import Praktikum14Cucumber.pages.HomePage;
 import Praktikum14Cucumber.pages.MyAccountPage;
 import Praktikum14Cucumber.pages.RegistrationFormPage;
 import Praktikum14Cucumber.pages.RegistrationResultPage;
 import Praktikum14Cucumber.utils.ConfigurationReader;
-import Praktikum14Cucumber.utils.DataHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
-import java.time.Year;
 import java.util.List;
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -79,34 +73,7 @@ public class RegistrationFormSteps {
 
     @When("The user enters correct personal data")
     public void theUserEntersCorrectPersonalData() throws InterruptedException {
-        Random random = new Random();
-        User newTestUser = DataHelper.createNewTestUser();
-        registrationFormPage.genderMale.click();
-        registrationFormPage.firstName.sendKeys(newTestUser.getFirstName());
-        Thread.sleep(500);
-        for (char ch : newTestUser.getLastName().toCharArray()) {
-            registrationFormPage.lastName.sendKeys(String.valueOf(ch));
-            Thread.sleep(100);
-        }
-        Select selectDay = new Select(registrationFormPage.dateOfBirthDay);
-        selectDay.selectByVisibleText(String.valueOf(random.nextInt(30) + 1));
-        Select selectMonth = new Select(registrationFormPage.dateOfBirthMonth);
-        String[] months = {"Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September",
-                "Oktober", "November", "Dezember"};
-        selectMonth.selectByVisibleText(months[random.nextInt(months.length)]);
-        int currentYear = Year.now().getValue();
-        int randomYear = 1914 + random.nextInt(currentYear - 1914 + 1);
-        Select selectYear = new Select(registrationFormPage.dateOfBirthYear);
-        selectYear.selectByVisibleText(String.valueOf(randomYear));
-
-        registrationFormPage.eMail.sendKeys(newTestUser.getEmail());
-        Thread.sleep(900);
-        registrationFormPage.company.sendKeys(newTestUser.getCompany());
-        Thread.sleep(600);
-        registrationFormPage.password.sendKeys(newTestUser.getPassword());
-        Thread.sleep(200);
-        registrationFormPage.confirmPassword.sendKeys(newTestUser.getPassword());
-        Thread.sleep(400);
+        registrationFormPage.enteringCorrectDataInTheAllFields();
     }
 
     @And("The user clicks the Register button")
@@ -129,5 +96,97 @@ public class RegistrationFormSteps {
     public void theUserAccountPageOpens() {
         assertEquals(TestContext.getDriver().getCurrentUrl(),
                 ConfigurationReader.get("accountUrl"));
+    }
+
+    @Then("The user should see an alarm messages against all mandatory fields")
+    public void theUserShouldSeeAnAlarmMessagesAgainstAllMandatoryFields() {
+        assertEquals(registrationFormPage.fieldValidationErrorFirstName.getText(),
+                ConfigurationReader.get("messageRequiredFirstNameField"));
+        assertEquals(registrationFormPage.fieldValidationErrorLastName.getText(),
+                ConfigurationReader.get("messageRequiredLastNameField"));
+        assertEquals(registrationFormPage.fieldValidationErrorEmail.getText(),
+                ConfigurationReader.get("messageRequiredAdressField"));
+        assertEquals(registrationFormPage.fieldValidationErrorPassword.getText(),
+                ConfigurationReader.get("messageRequiredPasswordField"));
+        assertEquals(registrationFormPage.fieldValidationErrorConfirmPassword.getText(),
+                ConfigurationReader.get("messageRequiredPasswordField"));
+    }
+
+    @When("The user tries to enter {string} in the first name field")
+    public void theUserTriesToEnterIncorrectDataInTheFirstNameField(String incorrectDataFirstName) throws InterruptedException {
+        if ("SP".equals(incorrectDataFirstName)) {
+            incorrectDataFirstName = " ";
+        }
+    registrationFormPage.enteringIncorrectDataInTheFirstNameField(incorrectDataFirstName);
+    }
+
+    @Then("The user should see an alarm message next to the incorrectly filled in first name field")
+    public void theUserShouldSeeAnAlarmMessageNextToTheIncorrectlyFilledInFirstNameField() {
+        assertEquals(registrationFormPage.fieldValidationErrorFirstName.getText(),
+                ConfigurationReader.get("messageRequiredFirstNameField"));
+    }
+
+    @When("The user tries to enter {string} in the last name field")
+    public void theUserTriesToEnterIncorrectDataInTheLastNameField(String incorrectDataLastName) throws InterruptedException {
+        if ("SP".equals(incorrectDataLastName)) {
+            incorrectDataLastName = " ";
+        }
+        registrationFormPage.enteringIncorrectDataInTheLastNameField(incorrectDataLastName);
+    }
+
+    @Then("The user should see an alarm message next to the incorrectly filled in last name field")
+    public void theUserShouldSeeAnAlarmMessageNextToTheIncorrectlyFilledInLastNameField() {
+        assertEquals(registrationFormPage.fieldValidationErrorLastName.getText(),
+                ConfigurationReader.get("messageRequiredLastNameField"));
+    }
+
+    @When("The user tries to enter {string} in the Email field")
+    public void theUserFillsInAllFieldsExceptEmail(String incorrectEmail) throws InterruptedException {
+        if ("SP".equals(incorrectEmail)) {
+            incorrectEmail = " ";
+        }
+        registrationFormPage.enteringIncorrectEmailField(incorrectEmail);
+    }
+
+    @When("The user tries to enter {string} in the email field")
+    public void theUserTriesToEnterIncorrectDataInTheEmailField(String incorrectEmail) {
+       registrationFormPage.eMail.sendKeys(incorrectEmail);
+       registrationFormPage.password.click();
+    }
+
+    @Then("The user should see an {string} v1 next to the incorrectly filled in email field")
+    public void theUserShouldSeeAnAlarmMessageV1NextToTheIncorrectlyFilledInEmailField(String correctAlarmMassage) {
+        assertEquals(registrationFormPage.fieldValidationErrorEmail.getText(),
+                ConfigurationReader.get(correctAlarmMassage));
+    }
+
+    @Then("The user should see an {string} v2 next to the incorrectly filled in email field")
+    public void theUserShouldSeeAnAlarmMessageV2NextToTheIncorrectlyFilledInEmailField(String correctAlarmMassage) {
+        assertEquals(registrationFormPage.fieldAlarmMessage.getText(),
+                ConfigurationReader.get(correctAlarmMassage));
+    }
+
+    @When("The user tries to enter {string} in the password field")
+    public void theUserTriesToEnterIncorrectDataInThePasswordField(String incorrectPassword) throws InterruptedException {
+        if ("SP".equals(incorrectPassword)) {
+            incorrectPassword = " ";
+        }
+        registrationFormPage.enteringIncorrectPasswordField(incorrectPassword);
+    }
+
+    @Then("The user should see an {string} next to the incorrectly filled in password field")
+    public void theUserShouldSeeAnAlarmMessageNextToTheIncorrectlyFilledInPasswordField(String correctAlarmMassage) {
+        assertTrue(registrationFormPage.fieldValidationErrorPassword.getText().contains(ConfigurationReader.get(correctAlarmMassage)));
+    }
+
+    @When("The User has entered a {string} and {string} in confirmation password field")
+    public void theUserHasEnteredAValidPasswordAndIncorrectDataInConfirmationPasswordField(String correctPassword, String incorrectConfirmPassword) throws InterruptedException {
+        registrationFormPage.enteringIncorrectConfirmPasswordField(correctPassword, incorrectConfirmPassword);
+    }
+
+    @Then("The user should see an {string} next to the incorrectly filled in confirm password field")
+    public void theUserShouldSeeAnAlarmMessageNextToTheIncorrectlyFilledInConfirmPasswordField(String correctAlarmMassage) {
+        assertEquals(registrationFormPage.fieldValidationErrorConfirmPassword.getText(),
+                ConfigurationReader.get(correctAlarmMassage));
     }
 }
