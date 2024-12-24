@@ -1,6 +1,5 @@
-@ignored
-Feature: Search Functionality
 
+Feature: Search Functionality
   Background:
     Given The user is on the main page
 
