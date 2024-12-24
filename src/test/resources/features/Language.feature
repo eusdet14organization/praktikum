@@ -4,25 +4,9 @@ Feature: Language Switcher
   Background:
     Given The user is on the main page
 
-
   Scenario: Language availability
     When I hover the mouse over the Language switcher
     Then I see a choose of two languages with country flags: English and German
-
-#    Scenario:
-#      When The user move the cursor over the '<language>' icon
-#      Then The tooltip <name> is displayed below the '<language>' button
-#      Examples:
-#        | language | name |
-#        | DE       |
-#problem
-#  Scenario: Tooltip for English language
-#    When I move the cursor over the English language icon
-#    Then the Tooltip 'En' is displayed below the English  language button
-#
-#  Scenario: Tooltip for German language
-#    When I move the cursor over the German language icon
-#    Then the Tooltip 'DE' is displayed below the German button
 
   Scenario Outline:Switch language
     When The user click on '<language>' in the top menu
@@ -34,9 +18,9 @@ Feature: Language Switcher
 
 
   Scenario Outline: Verify language persistence after reload
-    When The user switch the '<language>' to:
+    When The user switch the '<language>' to
     And The user reload the Page
-    Then the website should display content '<Text>' in:
+    Then the website should display content '<Text>' in
     Examples:
       | language | Text       |
       | DE       | Startseite |
@@ -44,7 +28,8 @@ Feature: Language Switcher
 
   Scenario: Verify language persistence after navigation
     When The user switch the language to German
-    And The user navigate to another page
+    And The user moves the cursor over the navigation menu
+    And The user click on the "Composite"
     Then the website should display content in German
 
 
