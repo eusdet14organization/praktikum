@@ -1,7 +1,6 @@
 package Praktikum14Cucumber.steps;
 
 import Praktikum14Cucumber.context.TestContext;
-import Praktikum14Cucumber.pages.ContactPage;
 import Praktikum14Cucumber.pages.HomePage;
 import Praktikum14Cucumber.pages.LanguagePage;
 import io.cucumber.java.en.And;
@@ -14,10 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class LanguageSteps {
-
     HomePage homePage = new HomePage();
     LanguagePage languagePage = new LanguagePage();
-    ContactPage contactPage = new ContactPage();
 
     @When("I hover the mouse over the Language switcher")
     public void iHoverTheMouseOverTheLanguageSwitcher() {
@@ -97,8 +94,6 @@ public class LanguageSteps {
 
     @Then("the website should display content in German")
     public void theWebsiteShouldDisplayContentInGerman() {
-      assertEquals(languagePage.nameOfHeaderOfCategoryPage.getText(),"Kategorien","This name is not in German");
+        assertEquals(languagePage.nameOfHeaderOfCategoryPage.getText(), "Kategorien", "This name is not in German");
     }
-
-
 }
