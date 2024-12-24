@@ -3,7 +3,7 @@ package Praktikum14Cucumber.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LocalizationPage extends BasePage{
+public class LanguagePage extends BasePage{
 
     @FindBy(xpath = "//img[@title='DE']")
     public WebElement germanLanguageTitle;

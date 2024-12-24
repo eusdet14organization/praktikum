@@ -3,7 +3,7 @@ package Praktikum14Cucumber.steps;
 import Praktikum14Cucumber.context.TestContext;
 import Praktikum14Cucumber.pages.ContactPage;
 import Praktikum14Cucumber.pages.HomePage;
-import Praktikum14Cucumber.pages.LocalizationPage;
+import Praktikum14Cucumber.pages.LanguagePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class LocalizationSteps {
+public class LanguageSteps {
 
     HomePage homePage = new HomePage();
-    LocalizationPage localizationPage = new LocalizationPage();
+    LanguagePage languagePage = new LanguagePage();
     ContactPage contactPage = new ContactPage();
 
     @When("I hover the mouse over the Language switcher")
@@ -34,7 +34,7 @@ public class LocalizationSteps {
 
     @Then("the Tooltip {string} is displayed below the English  language button")
     public void theTooltipEnIsDisplayedBelowTheEnglishLanguageButton() {
-        assertEquals(localizationPage.englishLanguageTitle.getAttribute("title"), "EN", "Tooltip text is not correct");
+        assertEquals(languagePage.englishLanguageTitle.getAttribute("title"), "EN", "Tooltip text is not correct");
     }
 
     @When("The user click on {string} in the top menu")
@@ -49,10 +49,10 @@ public class LocalizationSteps {
     @Then("The user should see the menu item in the {string}")
     public void theUserShouldSeeTheMenuItemInTheCorrectLanguage(String correctLanguage) {
         if (correctLanguage.equals("Startseite")) {
-            assertEquals(localizationPage.searchField.getAttribute("placeholder"), "Shop durchsuchen", "Site text is not in German");
+            assertEquals(languagePage.searchField.getAttribute("placeholder"), "Shop durchsuchen", "Site text is not in German");
         } else {
-            assertEquals(localizationPage.searchField.getAttribute("placeholder"), "Search store", "Site text is " +
-                                                                                                   "not in English");
+            assertEquals(languagePage.searchField.getAttribute("placeholder"), "Search store", "Site text is " +
+                                                                                               "not in English");
         }
     }
 
@@ -73,10 +73,10 @@ public class LocalizationSteps {
     @Then("the website should display content {string} in")
     public void theWebsiteShouldDisplayContentTextIn(String text) {
         if (text.equals("Startseite")) {
-            assertEquals(localizationPage.searchField.getAttribute("placeholder"), "Shop durchsuchen", "Site text is not in German");
+            assertEquals(languagePage.searchField.getAttribute("placeholder"), "Shop durchsuchen", "Site text is not in German");
         } else {
-            assertEquals(localizationPage.searchField.getAttribute("placeholder"), "Search store", "Site text is " +
-                                                                                                   "not in English");
+            assertEquals(languagePage.searchField.getAttribute("placeholder"), "Search store", "Site text is " +
+                                                                                               "not in English");
         }
     }
 
@@ -97,7 +97,7 @@ public class LocalizationSteps {
 
     @Then("the website should display content in German")
     public void theWebsiteShouldDisplayContentInGerman() {
-      assertEquals(localizationPage.nameOfHeaderOfCategoryPage.getText(),"Kategorien","This name is not in German");
+      assertEquals(languagePage.nameOfHeaderOfCategoryPage.getText(),"Kategorien","This name is not in German");
     }
 
 
