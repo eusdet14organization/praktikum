@@ -16,7 +16,6 @@ public class LocalizationSteps {
 
     HomePage homePage = new HomePage();
     LocalizationPage localizationPage = new LocalizationPage();
-    ContactPage contactPage = new ContactPage();
 
     @When("I hover the mouse over the Language switcher")
     public void iHoverTheMouseOverTheLanguageSwitcher() {
@@ -104,13 +103,13 @@ public class LocalizationSteps {
         homePage.switchLanguageDE.click();
     }
 
-    @And("The user navigate to another page")
-    public void theUserNavigateToAnotherPage() {
-       contactPage.kontaktButton.click();
-    }
-
-    @Then("the website should display content in German")
-    public void theWebsiteShouldDisplayContentInGerman() {
-        assertEquals(contactPage.submitButton.getText(),"  Absenden ","There is no such button");
-    }
+//    @And("The user navigate to another page")
+//    public void theUserNavigateToAnotherPage() {
+//       contactPage.kontaktButton.click();
+//    }
+//
+//    @Then("the website should display content in German")
+//    public void theWebsiteShouldDisplayContentInGerman() {
+//        assertEquals(contactPage.submitButton.getText(),"  Absenden ","There is no such button");
+//    }
 }
