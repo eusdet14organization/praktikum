@@ -17,8 +17,6 @@ public class LocalizationPage extends BasePage{
     @FindBy(xpath = "//input[@class='form-control appended-form-control ui-autocomplete-input']")
     public WebElement searchField;
 
-    @FindBy(xpath = "//span[text()='Kürzlich angesehen']")
-    public WebElement recentlyViewed;
 
 
 
