@@ -142,6 +142,7 @@ Feature:ShoppingCartFunctionality
 
 
 
+
   Scenario:Adding a specified quantity of multiple products to your cart from search results and view it in cart.
     And The user records the number of items in the cart.
     When The user searches for and adds several products to the cart
