@@ -36,6 +36,11 @@ public class SearchPage extends BasePage {
     @FindBy(xpath = "//span[@class='close']")
     public WebElement closeMessageButton;
 
+    @FindBy(xpath = "//div[@id='bar-notification']")
+    public WebElement windowsNotification;
+
+
+
     @FindBy(xpath = "//div[@class='card']")
     public List<WebElement> listProduct;
 

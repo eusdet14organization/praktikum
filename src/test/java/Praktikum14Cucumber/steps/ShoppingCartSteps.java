@@ -2,6 +2,7 @@ package Praktikum14Cucumber.steps;
 
 import Praktikum14Cucumber.dto.Cart;
 import Praktikum14Cucumber.pages.HomePage;
+import Praktikum14Cucumber.pages.ProductPage;
 import Praktikum14Cucumber.pages.SearchPage;
 import Praktikum14Cucumber.pages.ShoppingCartPage;
 import Praktikum14Cucumber.utils.ConfigurationReader;
@@ -10,12 +11,15 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.HashMap;
+
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static Praktikum14Cucumber.context.TestContext.getWait;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -25,8 +29,9 @@ public class ShoppingCartSteps {
     SearchPage searchPage = new SearchPage();
     SearchSteps searchSteps = new SearchSteps();
     SearchPageHelp searchPageHelp = new SearchPageHelp();
+    ProductPage productPage = new ProductPage();
 
-    int amountProductInCart = 0;
+    int amountProductInCartStart = 0;
     int amountProductAddToCart = 1;
 
 
@@ -36,10 +41,9 @@ public class ShoppingCartSteps {
     }
 
     @When("The user clicks on the image of the Shopping Cart.")
-    public void theUserClicksOnTheImageOfTheShoppingCart() throws InterruptedException {
+    public void theUserClicksOnTheImageOfTheShoppingCart(){
         homePage.imagesCart.click();
     }
-
 
     @When("The user clicks on the number next to the shopping cart image.")
     public void theUserClicksOnTheNumberNextToTheShoppingCartImage() {
@@ -47,7 +51,7 @@ public class ShoppingCartSteps {
     }
 
     @When("The user clicks on the word Warenkorb in the top menu of the page.")
-    public void theUserClicksOnTheWordWarenkorbInTheTopMenuOfThePage(String namePage) {
+    public void theUserClicksOnTheWordWarenkorbInTheTopMenuOfThePage() {
         homePage.toCartButton.click();
     }
 
@@ -57,23 +61,43 @@ public class ShoppingCartSteps {
     }
 
     @When("The user searches for and adds several products to the cart")
-    public void theUserSearchesForAndAddsSeveralProductsToTheCart(List<Cart> carts) throws InterruptedException {
+    public void theUserSearchesForAndAddsSeveralProductsToTheCart(List<Cart> carts) {
         amountProductAddToCart = 0;
         for (Cart cart : carts) {
             searchSteps.theUserEntersTheNameOrPartTheNameOfTheProductInTheSearchFieldAufTopMenu(cart.getNameProduct());
             for (int i = 0; i < Integer.parseInt(cart.getAmount()); i++) {
                 searchPage.listAddToCartButton.getFirst().click();
-                assertTrue(searchPage.messageAddProductToCart.isDisplayed());
                 searchPage.closeMessageButton.click();
-                Thread.sleep(2000);
+                getWait().until(ExpectedConditions.invisibilityOf(searchPage.windowsNotification));
             }
             amountProductAddToCart = amountProductAddToCart + Integer.parseInt(cart.getAmount());
         }
     }
 
+    @When("The user searches for and adds several products to the cart from product card.")
+    public void theUserSearchesForAndAddsSeveralProductsToTheCartFromProductCard(List<Cart> carts){
+        amountProductAddToCart =0;
+        for (Cart cart:carts){
+            searchSteps.theUserEntersTheNameOrPartTheNameOfTheProductInTheSearchFieldAufTopMenu(cart.getNameProduct());
+            searchPage.listNameProduct.getFirst().click();
+            Select amountProduct = new Select(productPage.selectAmountProduct);
+            amountProduct.selectByVisibleText(cart.getAmount());
+            productPage.addToCartButton.click();
+            searchPage.closeMessageButton.click();
+            amountProductAddToCart = amountProductAddToCart + Integer.parseInt(cart.getAmount());
+        }
+    }
+
+    @When("The user removes an product from the cart.")
+    public void theUserRemovesAnProductFromTheCart(Map<String,String> dataTable) {
+        int idx=searchPageHelp.getIndexProductByName(shoppingCartPage.listNameProductInCart,getDataTable(dataTable));
+        shoppingCartPage.listDeleteProductButton.get(idx).click();
+        shoppingCartPage.listConfirmDeleteProductButton.getLast().click();
+    }
+
     @And("The user records the number of items in the cart.")
     public void theUserRecordsTheNumberOfItemsInTheCart() {
-        amountProductInCart = Integer.parseInt(homePage.amountProductInCart.getText());
+        amountProductInCartStart = Integer.parseInt(homePage.amountProductInCart.getText());
     }
 
     @And("The user clicks on the button Add to Cart on Product Card")
@@ -82,21 +106,39 @@ public class ShoppingCartSteps {
     }
 
     @And("The user clicks on the button Add to Cart on Product Card {int} times")
-    public void theUserClicksOnTheButtonAddToCartOnProductCardAmountTimes(int amount) throws InterruptedException {
+    public void theUserClicksOnTheButtonAddToCartOnProductCardAmountTimes(int amount) {
         amountProductAddToCart = amount;
         for (int i = 0; i < amount; i++) {
             searchPage.listAddToCartButton.getFirst().click();
             searchPage.closeMessageButton.click();
-            Thread.sleep(2000);
+            getWait().until(ExpectedConditions.invisibilityOf(searchPage.windowsNotification));
         }
     }
 
     @And("The user sees a {string} at the top of the page.")
-    public void theUserSeesAAtTheTopOfThePage(String message) throws InterruptedException {
+    public void theUserSeesAAtTheTopOfThePage(String message) {
         assertTrue(searchPage.messageAddProductToCart.isDisplayed());
         assertEquals(ConfigurationReader.get(message), searchPage.messageAddProductToCart.getText());
         searchPage.closeMessageButton.click();
-        Thread.sleep(2000);
+        getWait().until(ExpectedConditions.invisibilityOf(searchPage.windowsNotification));
+    }
+
+    @And("The user change the amount of a product in the cart to {string}.")
+    public void theUserChangeTheAmountOfAProductInTheCartToNewAmount(String newAmount) {
+        Select amountProductSelect = new Select(shoppingCartPage.listSelectAmountProduct.getFirst());
+        amountProductSelect.selectByVisibleText(newAmount);
+    }
+
+    @And("The user go to product card.")
+    public void theUserGoToProductCard() {
+        searchPage.listNameProduct.getFirst().click();
+    }
+
+    @And("The user clicks on the button Add to Cart.")
+    public void theUserClicksOnTheButtonAddToCart(){
+        productPage.addToCartButton.click();
+        searchPage.closeMessageButton.click();
+        getWait().until(ExpectedConditions.invisibilityOf(searchPage.windowsNotification));
     }
 
 
@@ -112,8 +154,8 @@ public class ShoppingCartSteps {
     @Then("The user checks the amount product in the cart using the information in the main menu.")
     public void theUserChecksTheAmountProductInTheCartUsingTheInformationInTheMainMenu() {
         assertTrue(homePage.amountProductInCart.isDisplayed());
-        assertEquals(amountProductInCart + amountProductAddToCart,
-                Integer.parseInt(homePage.amountProductInCart.getText()));
+        assertEquals(amountProductAddToCart,
+                Integer.parseInt(homePage.amountProductInCart.getText())- amountProductInCartStart);
     }
 
 
@@ -130,8 +172,16 @@ public class ShoppingCartSteps {
                 searchPageHelp.getAmountBySelect(shoppingCartPage.listSelectAmountProduct)));
     }
 
+
+    @Then("The user selects the required {string} of product")
+    public void theUserSelectsTheRequiredAmountOfProduct(String amount) {
+        amountProductAddToCart=Integer.parseInt(amount);
+        Select amountProductToCart = new Select(productPage.selectAmountProduct);
+        amountProductToCart.selectByVisibleText(amount);
+    }
+
     public Map<String,String> getDataTable(Map<String,String> dataTable) {
-        Map<String, String> processedData = new HashMap<>();
+        Map<String, String> processedData = new LinkedHashMap<>();
         for (Map.Entry<String, String> entry : dataTable.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
@@ -139,4 +189,7 @@ public class ShoppingCartSteps {
         }
         return processedData;
     }
+
+
+
 }

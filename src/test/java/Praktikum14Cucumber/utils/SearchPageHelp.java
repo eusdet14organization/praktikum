@@ -90,11 +90,31 @@ public class SearchPageHelp {
     }
 
     public Map<String, String> getMapProductInCart(List<WebElement> names, List<String> amounts){
-        Map<String,String> mapProductInCart = new HashMap<>();
+        Map<String,String> mapProductInCart = new LinkedHashMap<>();
 
         for (int i = 0; i < names.size(); i++) {
             mapProductInCart.put(names.get(i).getText(),amounts.get(i));
         }
         return mapProductInCart;
+    }
+
+    public String getKeyMap(Map<String,String> map){
+        String keyMap = "";
+        for (Map.Entry<String,String> entry:map.entrySet()){
+            keyMap=entry.getKey();
+        }
+        return keyMap;
+    }
+
+    public int getIndexProductByName(List<WebElement> nameProducts, Map<String,String> nameRemoveProducts){
+        int index=0;
+        for(WebElement name:nameProducts){
+            System.out.println(name.getText());
+            if (name.getText().equalsIgnoreCase(getKeyMap(nameRemoveProducts))){
+                break;
+            }
+            index++;
+        }
+        return index;
     }
 }
