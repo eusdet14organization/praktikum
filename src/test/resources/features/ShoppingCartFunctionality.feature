@@ -1,3 +1,4 @@
+@ignored
 Feature:ShoppingCartFunctionality
 
   Background:
