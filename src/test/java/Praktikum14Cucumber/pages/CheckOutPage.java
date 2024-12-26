@@ -48,37 +48,9 @@ public class CheckOutPage extends BasePage{
     public WebElement selectAddress;
 
 
-
-
    /* public WebElement selectInvoicingAddressWithAlreadyExistingData(String invoicingName) {
         return getDriver().findElement(By.xpath(
                 String.format("//select[@id='billing-address-select']/option[contains(text(),'%s')]", invoicingName)));
     }*/
-
-    public void selectNeededAddress(String name){
-
-    }
-
-
-    public void clickOnTheButtonNextStepShippingCard() {
-        wait.until(ExpectedConditions.elementToBeClickable(nextStepButtonInTheShippingCard));
-        nextStepButtonInTheShippingCard.click();
-    }
-
-    public void clickOnTheButtonNextStepPaymentCard(){
-        wait.until(ExpectedConditions.elementToBeClickable(nextStepButtonInThePaymentCard));
-        nextStepButtonInThePaymentCard.click();
-    }
-
-    public void clickOnTheButtonNextStepOrderConfirmation(){
-        wait.until(ExpectedConditions.elementToBeClickable(nextStepButtonOrderConfirmation));
-        nextStepButtonOrderConfirmation.click();
-    }
-
-    public void clickOnButtonNextStepInvoicingcard(){
-        wait.until(ExpectedConditions.elementToBeClickable(nextStepButtonInTheInvoicingCard));
-        nextStepButtonInTheInvoicingCard.click();
-    }
-
 
 }

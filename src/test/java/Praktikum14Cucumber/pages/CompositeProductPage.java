@@ -27,11 +27,5 @@ public class CompositeProductPage extends BasePage {
         buttonKaufenCardKaiserBulk.click();
     }
 
-    public String checkTheCurrentPageUrl() {
-        return TestContext.getDriver().getCurrentUrl();
-    }
-    public void checkThatTheSuccessBarIsAppears(){
-        successBarNotification.isDisplayed();
-    }
 
 }

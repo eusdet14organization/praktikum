@@ -21,17 +21,7 @@ public class PurchaseConfirmationPage extends BasePage {
         assertEquals(ConfigurationReader.get("messageSuccessOrder"),conformationTextOnTheCenterOnThePage.getText());
     }
 
-    public void checkTheTextOfSuccessOrderIsDisplayed(){
-        assertTrue(confirmationTextOnTheTopOnThePage.isDisplayed());
-    }
 
-    public void clickOnTheOrderDetailsButton(){
-        orderDetailsButton.click();
-    }
-
-    public void checkIfTheButtonOfOrderDetailsIsPresent(){
-        assertTrue(orderDetailsButton.isDisplayed());
-    }
 
 
 }
