@@ -1,15 +1,18 @@
 package Praktikum14Cucumber.pages;
 
+import Praktikum14Cucumber.context.TestContext;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static Praktikum14Cucumber.context.TestContext.getDriver;
 
 public class CheckOutPage extends BasePage{
     Faker faker = new Faker();
-
+    WebDriverWait wait = TestContext.getWait();
     @FindBy(xpath = "//*[@id='BillingNewAddress_CountryId']/option[@value='84']")
     public WebElement selectGermanyCountry;
 
@@ -31,7 +34,7 @@ public class CheckOutPage extends BasePage{
     @FindBy(xpath = "//*[@id='BillingNewAddress_StateProvinceId']")
     public WebElement stateProvinceInputField;
 
-    @FindBy(xpath = "//div[@id='shipping-buttons-container']//button[@class='btn btn-primary']")
+    @FindBy(xpath = "//div[@id='shipping-method-buttons-container']//button[@class='btn btn-primary']")
     public WebElement nextStepButtonInTheShippingCard;
 
     @FindBy(xpath = "//div[@id='payment-info-buttons-container']//button[@class='btn btn-primary']")
@@ -41,28 +44,41 @@ public class CheckOutPage extends BasePage{
     @FindBy(xpath = "//div[@id='confirm-order-buttons-container']//button[@class='btn btn-primary']")
     public WebElement nextStepButtonOrderConfirmation;
 
+    @FindBy(xpath = "//select[@id='billing-address-select']")
+    public WebElement selectAddress;
 
 
 
-    public WebElement selectInvoicingAddressWithAlreadyExistingData(String invoicingName) {
+
+   /* public WebElement selectInvoicingAddressWithAlreadyExistingData(String invoicingName) {
         return getDriver().findElement(By.xpath(
                 String.format("//select[@id='billing-address-select']/option[contains(text(),'%s')]", invoicingName)));
-    }
+    }*/
 
     public void selectNeededAddress(String name){
-        selectInvoicingAddressWithAlreadyExistingData(name).click();
+
     }
 
 
-    public void clickOnTheButtonNextStepShippingCard(){
+    public void clickOnTheButtonNextStepShippingCard() {
+        wait.until(ExpectedConditions.elementToBeClickable(nextStepButtonInTheShippingCard));
         nextStepButtonInTheShippingCard.click();
     }
 
     public void clickOnTheButtonNextStepPaymentCard(){
+        wait.until(ExpectedConditions.elementToBeClickable(nextStepButtonInThePaymentCard));
         nextStepButtonInThePaymentCard.click();
     }
 
     public void clickOnTheButtonNextStepOrderConfirmation(){
+        wait.until(ExpectedConditions.elementToBeClickable(nextStepButtonOrderConfirmation));
         nextStepButtonOrderConfirmation.click();
     }
+
+    public void clickOnButtonNextStepInvoicingcard(){
+        wait.until(ExpectedConditions.elementToBeClickable(nextStepButtonInTheInvoicingCard));
+        nextStepButtonInTheInvoicingCard.click();
+    }
+
+
 }

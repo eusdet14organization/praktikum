@@ -49,11 +49,11 @@ public class MyAccountPage extends BasePage {
     public void fillOutTheLogInFormWithData() throws InterruptedException {
         for (char ch : ConfigurationReader.get("eMail").toCharArray()) {
             eMail.sendKeys(String.valueOf(ch));
-            Thread.sleep(100);
+            Thread.sleep(300);
         }
         for (char ch : ConfigurationReader.get("password").toCharArray()) {
             password.sendKeys(String.valueOf(ch));
-            Thread.sleep(100);
+            Thread.sleep(300);
         }
     }
 

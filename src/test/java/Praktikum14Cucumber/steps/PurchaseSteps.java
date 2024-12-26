@@ -1,11 +1,16 @@
 package Praktikum14Cucumber.steps;
 
+import Praktikum14Cucumber.context.TestContext;
 import Praktikum14Cucumber.pages.CheckOutPage;
 import Praktikum14Cucumber.pages.CompositeProductPage;
 import Praktikum14Cucumber.pages.PurchaseConfirmationPage;
 import Praktikum14Cucumber.pages.ShoppingCartPage;
+import Praktikum14Cucumber.utils.ConfigurationReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PurchaseSteps {
 
@@ -34,10 +39,7 @@ public class PurchaseSteps {
         shoppingCartPage.clickOnKaufenCheckOutButton();
     }
 
-    @And("The user filling out the address form")
-    public void theUserFillingOutTheAddressForm() {
-        checkOutPage.fillingOutTheInvoiceAddressCard();
-    }
+
 
     @And("The user clicks on the button next step on the shipping cart")
     public void theUserClicksOnTheButtonNextStepOnTheShippingCart() {
@@ -52,10 +54,13 @@ public class PurchaseSteps {
     @And("The user clicks on the button next step on the confirmation cart")
     public void theUserClicksOnTheButtonNextStepOnTheConfirmationCart() {
         checkOutPage.clickOnTheButtonNextStepOrderConfirmation();
+
     }
 
     @Then("The user should see the success text on the top of the page")
     public void theUserShouldSeeTheSuccessTextOnTheTopOfThePage() {
+        WebDriverWait wait = TestContext.getWait();
+        wait.until(ExpectedConditions.visibilityOf(confirmationPage.conformationTextOnTheCenterOnThePage));
         confirmationPage.checkTheTextOnThePage();
     }
 
@@ -72,6 +77,12 @@ public class PurchaseSteps {
 
     @And("The user selects an invoicing address with the {string}")
     public void theUserSelectsAnInvoicingAddressWithThe(String customerName) {
-        checkOutPage.selectNeededAddress(customerName);
+        Select selectAddress = new Select(checkOutPage.selectAddress);
+        String nameFromConF = ConfigurationReader.get(customerName);
+        if (nameFromConF.isEmpty()) {
+            selectAddress.selectByVisibleText(customerName);
+        }else selectAddress.selectByVisibleText(nameFromConF);
+
+        checkOutPage.clickOnButtonNextStepInvoicingcard();
     }
 }

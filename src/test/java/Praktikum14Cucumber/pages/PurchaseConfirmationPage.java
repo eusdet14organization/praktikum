@@ -11,7 +11,7 @@ public class PurchaseConfirmationPage extends BasePage {
     @FindBy(xpath = "//h1[@class='c']")
     public WebElement confirmationTextOnTheTopOnThePage;
 
-    @FindBy(xpath = "//div[@class='title']")
+    @FindBy(xpath = "//div[@class='title'][strong[text()='Ihr Auftrag wurde erfolgreich übermittelt.']]")
     public WebElement conformationTextOnTheCenterOnThePage;
 
     @FindBy(xpath = "//div[@class='text-sm-center mt-3']")
