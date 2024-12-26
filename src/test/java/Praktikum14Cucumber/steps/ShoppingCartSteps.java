@@ -11,19 +11,14 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.checkerframework.checker.units.qual.C;
-import org.junit.jupiter.api.Timeout;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 
-import java.time.Duration;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-import static Praktikum14Cucumber.context.TestContext.getDriver;
 import static Praktikum14Cucumber.context.TestContext.getWait;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -46,7 +41,7 @@ public class ShoppingCartSteps {
     }
 
     @When("The user clicks on the image of the Shopping Cart.")
-    public void theUserClicksOnTheImageOfTheShoppingCart() throws InterruptedException {
+    public void theUserClicksOnTheImageOfTheShoppingCart(){
         homePage.imagesCart.click();
     }
 
@@ -66,21 +61,21 @@ public class ShoppingCartSteps {
     }
 
     @When("The user searches for and adds several products to the cart")
-    public void theUserSearchesForAndAddsSeveralProductsToTheCart(List<Cart> carts) throws InterruptedException {
+    public void theUserSearchesForAndAddsSeveralProductsToTheCart(List<Cart> carts) {
         amountProductAddToCart = 0;
         for (Cart cart : carts) {
             searchSteps.theUserEntersTheNameOrPartTheNameOfTheProductInTheSearchFieldAufTopMenu(cart.getNameProduct());
             for (int i = 0; i < Integer.parseInt(cart.getAmount()); i++) {
                 searchPage.listAddToCartButton.getFirst().click();
                 searchPage.closeMessageButton.click();
-                Thread.sleep(2000);
+                getWait().until(ExpectedConditions.invisibilityOf(searchPage.windowsNotification));
             }
             amountProductAddToCart = amountProductAddToCart + Integer.parseInt(cart.getAmount());
         }
     }
 
     @When("The user searches for and adds several products to the cart from product card.")
-    public void theUserSearchesForAndAddsSeveralProductsToTheCartFromProductCard(List<Cart> carts) throws InterruptedException {
+    public void theUserSearchesForAndAddsSeveralProductsToTheCartFromProductCard(List<Cart> carts){
         amountProductAddToCart =0;
         for (Cart cart:carts){
             searchSteps.theUserEntersTheNameOrPartTheNameOfTheProductInTheSearchFieldAufTopMenu(cart.getNameProduct());
@@ -111,21 +106,21 @@ public class ShoppingCartSteps {
     }
 
     @And("The user clicks on the button Add to Cart on Product Card {int} times")
-    public void theUserClicksOnTheButtonAddToCartOnProductCardAmountTimes(int amount) throws InterruptedException {
+    public void theUserClicksOnTheButtonAddToCartOnProductCardAmountTimes(int amount) {
         amountProductAddToCart = amount;
         for (int i = 0; i < amount; i++) {
             searchPage.listAddToCartButton.getFirst().click();
             searchPage.closeMessageButton.click();
-            Thread.sleep(2000);
+            getWait().until(ExpectedConditions.invisibilityOf(searchPage.windowsNotification));
         }
     }
 
     @And("The user sees a {string} at the top of the page.")
-    public void theUserSeesAAtTheTopOfThePage(String message) throws InterruptedException {
+    public void theUserSeesAAtTheTopOfThePage(String message) {
         assertTrue(searchPage.messageAddProductToCart.isDisplayed());
         assertEquals(ConfigurationReader.get(message), searchPage.messageAddProductToCart.getText());
         searchPage.closeMessageButton.click();
-        Thread.sleep(2000);
+        getWait().until(ExpectedConditions.invisibilityOf(searchPage.windowsNotification));
     }
 
     @And("The user change the amount of a product in the cart to {string}.")
@@ -140,9 +135,10 @@ public class ShoppingCartSteps {
     }
 
     @And("The user clicks on the button Add to Cart.")
-    public void theUserClicksOnTheButtonAddToCart() throws InterruptedException {
+    public void theUserClicksOnTheButtonAddToCart(){
         productPage.addToCartButton.click();
-        Thread.sleep(2000);
+        searchPage.closeMessageButton.click();
+        getWait().until(ExpectedConditions.invisibilityOf(searchPage.windowsNotification));
     }
 
 
