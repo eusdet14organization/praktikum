@@ -27,4 +27,5 @@ public class DataHelper {
         user.setPassword(faker.internet().password());
         return user;
     }
+
 }
