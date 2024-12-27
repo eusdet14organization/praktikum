@@ -50,7 +50,7 @@ Feature: Navigation Bar
       | Liners                | linersUrl              | linersUrlTitle              |
       | Etching               | etchingUrl             | etchingUrlTitle             |
       | Bonding               | gluingUrl              | gluingUrlTitle              |
-
+  @ignored
   Scenario Outline: Verify that the user can also click all links in the center navigation bar with picture of "Restorative Produkte"
     And The User selects "Restorative Produkte" in the main menu
     And The user should be redirected to the Restorative Produkte page and this page have correct title
@@ -67,6 +67,18 @@ Feature: Navigation Bar
       | Bonding               | gluingUrl              | gluingUrlTitle              |
 
     #Все товары в каждом меню открваются
-@ignored
-  Scenario: The user can open each product in each menu item with a product in the navigation bar ‘Restorative Produkte’
-    And The user click on the "Restorative Produkte" in the main menu
+
+  Scenario Outline: The user can open each product in each menu item with a product in the navigation bar ‘Restorative Produkte’
+    And The User selects "Restorative Produkte" in the main menu
+    And The user select a '<name LeftMenu>' item
+    When The user opens the card of each product in this section
+    Then The card of that product is opened
+    Examples:
+      | name LeftMenu         |
+      | Composite             |
+      | Bleaching             |
+      | Befestigungscomposite |
+      | Prophy Materials      |
+      | Liners                |
+      | Etching               |
+      | Bonding               |

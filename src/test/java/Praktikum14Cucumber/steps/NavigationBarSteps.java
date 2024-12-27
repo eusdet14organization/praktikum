@@ -6,6 +6,7 @@ import Praktikum14Cucumber.utils.ConfigurationReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.List;
 import static Praktikum14Cucumber.utils.DataHelper.*;
 import static Praktikum14Cucumber.context.TestContext.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NavigationBarSteps {
 
@@ -68,6 +70,22 @@ public class NavigationBarSteps {
     @When("The user chooses a {string} item")
     public void theUserChoosesANameCenterMenuItem(String nameCenterMenu) {
         restorativeProduktePage.selectTheCenterMenuItem(nameCenterMenu).click();
+    }
+
+    @When("The user opens the card of each product in this section")
+    public void theUserOpensTheCardOfEachProductInThisSection() {
+        for (WebElement nameOfProduct : restorativeProduktePage.productsTitle) {
+            String name = nameOfProduct.getText();
+            nameOfProduct.click();
+            getWait().until(ExpectedConditions.elementToBeClickable(homePage.menuRestorativeProdukte))
+            assertEquals(name,"Dr Müller. " + getDriver().getTitle());
+        }
+    }
+
+    @Then("The card of that product is opened")
+    public void theCardOfThatProductIsOpened() {
+        assertTrue(pageTitle.contains(expectedProductTitle));
+        getDriver().navigate().back();
     }
 }
 
