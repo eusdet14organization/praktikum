@@ -1,6 +1,5 @@
 package Praktikum14Cucumber.steps;
 
-import Praktikum14Cucumber.context.TestContext;
 import Praktikum14Cucumber.pages.HomePage;
 import Praktikum14Cucumber.pages.RestorativeProduktePage;
 import Praktikum14Cucumber.utils.ConfigurationReader;
@@ -33,10 +32,8 @@ public class NavigationBarSteps {
 
     @Then("The user should be redirected to the {string} and page have {string}")
     public void theUserClickOnTheButton(String correctPageUrl, String correctTitle) {
-        assertEquals(TestContext.getDriver().getCurrentUrl(),
-                ConfigurationReader.get(correctPageUrl));
-        assertEquals(TestContext.getDriver().getTitle(),
-                ConfigurationReader.get(correctTitle));
+        assertEquals(ConfigurationReader.get(correctPageUrl),getDriver().getCurrentUrl());
+        assertEquals(ConfigurationReader.get(correctTitle),getDriver().getTitle());
     }
 
     @When("The user moves mouse to the \"Restorative Producte\" in the main menu")
@@ -55,6 +52,22 @@ public class NavigationBarSteps {
     @And("The user selects a {string} item")
     public void theUserSelectsANameMenuItem(String nameMenu) {
         homePage.getDropMenuRestorativeProdukte(nameMenu).click();
+    }
+
+    @And("The user should be redirected to the Restorative Produkte page and this page have correct title")
+    public void theUserShouldBeRedirectedToTheAndThisPageHave() {
+        assertEquals(ConfigurationReader.get("recoveryProductsUrl"), getDriver().getCurrentUrl());
+        assertEquals(ConfigurationReader.get("recoveryProductsUrlTitle"),getDriver().getTitle());
+    }
+
+    @When("The user select a {string} item")
+    public void theUserSelectANameLeftMenuItem(String nameLeftMenu) {
+        restorativeProduktePage.selectTheLeftMenuItem(nameLeftMenu).click();
+    }
+
+    @When("The user chooses a {string} item")
+    public void theUserChoosesANameCenterMenuItem(String nameCenterMenu) {
+        restorativeProduktePage.selectTheCenterMenuItem(nameCenterMenu).click();
     }
 }
 

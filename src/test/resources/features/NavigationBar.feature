@@ -20,12 +20,12 @@ Feature: Navigation Bar
     When The user moves mouse to the "Restorative Producte" in the main menu
     Then The user must see a submenu appearing
   @ignored
-  Scenario Outline: Verify that the user  can select the menu item recovery products
+  Scenario Outline: Verify that the user can select the menu item recovery products
     When The user moves mouse to the "Restorative Producte" in the main menu
-    And The user selects a '<name menu>' item
+    And The user selects a '<name DropMenu>' item
     Then The user should be redirected to the '<correct page>' and page have '<correct title>'
     Examples:
-      | name menu             | correct page           | correct title               |
+      | name DropMenu         | correct page           | correct title               |
       | Composite             | compositeUrl           | compositeUrlTitle           |
       | Bleaching             | bleachingUrl           | bleachingUrlTitle           |
       | Befestigungscomposite | fixingCompositeUrl     | fixingCompositeUrlTitle     |
@@ -34,10 +34,37 @@ Feature: Navigation Bar
       | Etching               | etchingUrl             | etchingUrlTitle             |
       | Bonding               | gluingUrl              | gluingUrlTitle              |
 
-    #Сценарий для проверки подменю слева и то, что нахожится по центру
+    #Сценарий для проверки подменю слева и то, что находится по центру
   @ignored
-  Scenario: Verify that the user can also click all links in the navigation bar of "Restorative Produkte"
+  Scenario Outline: Verify that the user can also click all links in the left navigation bar of "Restorative Produkte"
     And The User selects "Restorative Produkte" in the main menu
+    And The user should be redirected to the Restorative Produkte page and this page have correct title
+    When The user select a '<name LeftMenu>' item
+    Then The user should be redirected to the '<correct page>' and page have '<correct title>'
+    Examples:
+      | name LeftMenu         | correct page           | correct title               |
+      | Composite             | compositeUrl           | compositeUrlTitle           |
+      | Bleaching             | bleachingUrl           | bleachingUrlTitle           |
+      | Befestigungscomposite | fixingCompositeUrl     | fixingCompositeUrlTitle     |
+      | Prophy Materials      | preventionMaterialsUrl | preventionMaterialsUrlTitle |
+      | Liners                | linersUrl              | linersUrlTitle              |
+      | Etching               | etchingUrl             | etchingUrlTitle             |
+      | Bonding               | gluingUrl              | gluingUrlTitle              |
+
+  Scenario Outline: Verify that the user can also click all links in the center navigation bar with picture of "Restorative Produkte"
+    And The User selects "Restorative Produkte" in the main menu
+    And The user should be redirected to the Restorative Produkte page and this page have correct title
+    When The user chooses a '<name CenterMenu>' item
+    Then The user should be redirected to the '<correct page>' and page have '<correct title>'
+    Examples:
+      | name CenterMenu       | correct page           | correct title               |
+      | Composite             | compositeUrl           | compositeUrlTitle           |
+      | Bleaching             | bleachingUrl           | bleachingUrlTitle           |
+      | Befestigungscomposite | fixingCompositeUrl     | fixingCompositeUrlTitle     |
+      | Prophy Materials      | preventionMaterialsUrl | preventionMaterialsUrlTitle |
+      | Liners                | linersUrl              | linersUrlTitle              |
+      | Etching               | etchingUrl             | etchingUrlTitle             |
+      | Bonding               | gluingUrl              | gluingUrlTitle              |
 
     #Все товары в каждом меню открваются
 @ignored
