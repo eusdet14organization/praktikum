@@ -24,7 +24,6 @@ public class PurchaseSteps {
     WebDriverWait wait = TestContext.getWait();
 
 
-
     @And(" The user clicks on the button buy")
     public void theUserClickOnTheBuyButtonInTheFirstCart() {
         compositeProductPage.checkIfTheFirstCardIsAvailable();
@@ -43,8 +42,6 @@ public class PurchaseSteps {
     public void clickOnCheckOutButton(){
         shoppingCartPage.checkOutButton.click();
     }
-
-
 
     @And("The user clicks on the button next step on the shipping cart")
     public void theUserClicksOnTheButtonNextStepOnTheShippingCart() {
@@ -81,7 +78,6 @@ public class PurchaseSteps {
         assertTrue(confirmationPage.orderDetailsButton.isDisplayed());
     }
 
-
     @And("The user selects an invoicing address with the {string}")
     public void theUserSelectsAnInvoicingAddressWithThe(String customerName) {
         Select selectAddress = new Select(checkOutPage.selectAddress);
@@ -89,7 +85,5 @@ public class PurchaseSteps {
         if (nameFromConF.isEmpty()) {
             selectAddress.selectByVisibleText(customerName);
         }else selectAddress.selectByVisibleText(nameFromConF);
-
-        checkOutPage.clickOnButtonNextStepInvoicingcard();
     }
 }

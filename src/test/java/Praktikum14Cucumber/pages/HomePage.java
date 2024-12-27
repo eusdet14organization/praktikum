@@ -1,12 +1,9 @@
 package Praktikum14Cucumber.pages;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static Praktikum14Cucumber.context.TestContext.getDriver;
@@ -43,14 +40,6 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//a[@class='dropdown-item']")
     public List <WebElement> listSubmenuOfRestorativeProdukte;
-
-    public List<String> webElementToString(List<WebElement> namesOfWebElements) {
-        List<String> actualList = new ArrayList<>();
-        for (WebElement nameOfList : namesOfWebElements) {
-            actualList.add(nameOfList.getText());
-        }
-            return actualList;
-    }
 
     public WebElement getDropMenuRestorativeProdukte(String nameDropMenu) {
         return getDriver().findElement(By.xpath(
