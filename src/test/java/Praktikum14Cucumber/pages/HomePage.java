@@ -52,10 +52,6 @@ public class HomePage extends BasePage {
             return actualList;
     }
 
-    //namesOfWebElements.stream()
-    //                    .map(WebElement::getText)
-    //                    .toList();
-
     public WebElement getDropMenuRestorativeProdukte(String nameDropMenu) {
         return getDriver().findElement(By.xpath(
                 String.format("//ul[@class='dropdown-menu']//a[text()='%s']", nameDropMenu)));

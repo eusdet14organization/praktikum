@@ -41,12 +41,11 @@ public class NavigationBarSteps {
 
     @Then("The user must see a submenu appearing")
     public void theUserMustSeeASubmenuAppearing() {
-        List<String> actualSubMenu = new ArrayList<>(homePage.webElementToString(homePage.listSubmenuOfRestorativeProdukte));
-        List<String> expectedSubMenu = new ArrayList<>(List.of("Composite, Bleaching, Befestigungscomposite, Prophy " +
-                "Materials, Liners, Etching, Bonding"));
-        System.out.println(actualSubMenu);
-        System.out.println(expectedSubMenu);
-        //assertTrue(expectedSubMenu.containsAll(actualSubMenu));
+        List<String> actualSubMenu =
+                new ArrayList<>(homePage.webElementToString(homePage.listSubmenuOfRestorativeProdukte));
+        List<String> expectedSubMenu = new ArrayList<>(List.of("Composite", "Bleaching", "Befestigungscomposite",
+                "Prophy Materials", "Liners", "Etching", "Bonding"));
         assertEquals(actualSubMenu, expectedSubMenu);
     }
 }
+
