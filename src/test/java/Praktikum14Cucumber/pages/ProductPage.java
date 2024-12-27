@@ -8,7 +8,7 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'page-title-overlap')]//h1[text()]")
     public WebElement titleProduct;
 
-    @FindBy(xpath = "//button[@id='add-to-cart-button-13']")
+    @FindBy(xpath = "//button[contains(@id,'add-to-cart-button')]")
     public WebElement addToCartButton;
 
     @FindBy(xpath = "//select[contains(@class,'custom-select')]")
