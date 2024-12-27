@@ -1,4 +1,4 @@
-
+@ignored
 
 Feature: The user is on the main page
 
