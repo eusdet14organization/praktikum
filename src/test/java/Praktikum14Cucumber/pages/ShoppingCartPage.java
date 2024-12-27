@@ -28,14 +28,4 @@ public class ShoppingCartPage extends BasePage{
     @FindBy(xpath = "//*[@id='checkout']")
     public WebElement checkOutButton;
 
-
-    public void clickOnKaufenCheckOutButton(){
-        checkOutButton.click();
-    }
-
-
-
-
-
-
 }
