@@ -39,7 +39,6 @@ Feature:ShoppingCartFunctionality
       | One Patient Bleaching Kit                  |   1  |
 
 
-
     Scenario:Adding a specified quantity of multiple products to your cart from search results
       And The user records the number of products in the cart.
       When The user searches for and adds several products to the cart
@@ -48,7 +47,6 @@ Feature:ShoppingCartFunctionality
         | Nord Core                                           |   2  |
         | Nord Faste                                          |   5  |
       Then The user checks the amount product in the cart using the information in the main menu.
-
 
 
   Scenario Outline:Adding products to cart from search results and view it in cart.
@@ -93,7 +91,6 @@ Feature:ShoppingCartFunctionality
       | Kaiser Flowable Composite Medium 2 X 2g Syringe-Spritze |   1  |  90     |
 
 
-
   Scenario Outline:Adding products to cart from product card
     And The user records the number of products in the cart.
     When The user enters the name or part the name of the '<Product>' in the search field  auf Top Menu.
@@ -108,7 +105,6 @@ Feature:ShoppingCartFunctionality
       | Nord Gel 4 X 1,2 ml                        |   50 |
       | Terra Root Cem Viscous 8 g Kartusche       |   5  |
       | One Patient Bleaching Kit                  |   1  |
-
 
 
   Scenario Outline:Adding products to cart from product card and view it in cart.
@@ -139,7 +135,6 @@ Feature:ShoppingCartFunctionality
       | Kaiser Nano Komposite Compules 20 X 0,3g   |  42  |
       | Nord Gel 4 X 1,2 ml                        |  15  |
       | Terra Root Cem Viscous 8 g Kartusche       |  70  |
-
 
 
   Scenario:Removing products from the cart
