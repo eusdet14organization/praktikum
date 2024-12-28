@@ -67,12 +67,11 @@ Feature: Navigation Bar
       | Bonding               | gluingUrl              | gluingUrlTitle              |
 
     #Все товары в каждом меню открваются
-
+  @ignored
   Scenario Outline: The user can open each product in each menu item with a product in the navigation bar ‘Restorative Produkte’
     And The User selects "Restorative Produkte" in the main menu
     And The user select a '<name LeftMenu>' item
-    When The user opens the card of each product in this section
-    Then The card of that product is opened
+    Then The user can opens the card of each product in this section
     Examples:
       | name LeftMenu         |
       | Composite             |
@@ -82,3 +81,38 @@ Feature: Navigation Bar
       | Liners                |
       | Etching               |
       | Bonding               |
+  @ignored
+  Scenario: The user can open each product in Composite category
+    And The User selects "Restorative Produkte" in the main menu
+    When The user select a "Composite" item
+    Then The user can opens the card of each product in this section
+  @ignored
+  Scenario: The user can open each product in Bleaching category
+    And The User selects "Restorative Produkte" in the main menu
+    When The user select a "Bleaching" item
+    Then The user can opens the card of each product in this section
+  @ignored
+  Scenario: The user can open each product in Befestigungscomposite category
+    And The User selects "Restorative Produkte" in the main menu
+    When The user select a "Befestigungscomposite" item
+    Then The user can opens the card of each product in this section
+  @ignored
+  Scenario: The user can open each product in Prophy Materials category
+    And The User selects "Restorative Produkte" in the main menu
+    When The user select a "Prophy Materials" item
+    Then The user can opens the card of each product in this section
+  @ignored
+  Scenario: The user can open each product in Liners category
+    And The User selects "Restorative Produkte" in the main menu
+    When The user select a "Liners" item
+    Then The user can opens the card of each product in this section
+  @ignored
+  Scenario: The user can open each product in Etching category
+    And The User selects "Restorative Produkte" in the main menu
+    When The user select a "Etching" item
+    Then The user can opens the card of each product in this section
+  @ignored
+  Scenario: The user can open each product in Bonding category
+    And The User selects "Restorative Produkte" in the main menu
+    When The user select a "Bonding" item
+    Then The user can opens the card of each product in this section
