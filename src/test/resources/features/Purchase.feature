@@ -1,3 +1,4 @@
+
 Feature: Make a purchase following all purchase steps
 
   Background:

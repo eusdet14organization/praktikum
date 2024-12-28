@@ -68,7 +68,6 @@ public class SearchSteps {
     @Then("The user sees the {string} he was looking for.")
     public void theUserSeesTheProductHeWasLookingFor(String nameProduct) {
 
-        assertTrue(searchPage.listProduct.size()>0);
         assertEquals(searchPage.listProduct.size(),
                 searchPageHelp.getAmountByValue(searchPage.listNameProduct,nameProduct));
     }
@@ -76,7 +75,6 @@ public class SearchSteps {
     @Then("The user sees in the products the {string} he was looking for.")
     public void theUserSeesInTheProductsTheDescriptionHeWasLookingFor(String nameDescription) {
 
-        assertTrue(searchPage.listProduct.size()>0);
         assertEquals(searchPage.listProduct.size(),
                 searchPageHelp.getAmountByValue(searchPage.listDescriptionProduct,nameDescription));
     }

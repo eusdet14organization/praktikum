@@ -11,8 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static Praktikum14Cucumber.context.TestContext.getDriver;
 
 public class CheckOutPage extends BasePage{
-    Faker faker = new Faker();
-    WebDriverWait wait = TestContext.getWait();
+
     @FindBy(xpath = "//*[@id='BillingNewAddress_CountryId']/option[@value='84']")
     public WebElement selectGermanyCountry;
 
