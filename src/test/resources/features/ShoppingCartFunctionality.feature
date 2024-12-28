@@ -1,4 +1,4 @@
-@ignored
+
 Feature:ShoppingCartFunctionality
 
   Background:
@@ -25,9 +25,8 @@ Feature:ShoppingCartFunctionality
     Then The user goes to the Cart page.
 
 
-
   Scenario Outline:Adding products to cart from search results
-    And The user records the number of items in the cart.
+    And The user records the number of products in the cart.
     When The user enters the name or part the name of the '<Product>' in the search field  auf Top Menu.
     And The user clicks on the button Add to Cart on Product Card <Amount> times
     Then The user checks the amount product in the cart using the information in the main menu.
@@ -40,16 +39,14 @@ Feature:ShoppingCartFunctionality
       | One Patient Bleaching Kit                  |   1  |
 
 
-
     Scenario:Adding a specified quantity of multiple products to your cart from search results
-      And The user records the number of items in the cart.
+      And The user records the number of products in the cart.
       When The user searches for and adds several products to the cart
         | Product                                             |Amount|
         | Kaiser Bulk Fill Composite 2 X 2g Syringe-Spritze   |   3  |
         | Nord Core                                           |   2  |
         | Nord Faste                                          |   5  |
       Then The user checks the amount product in the cart using the information in the main menu.
-
 
 
   Scenario Outline:Adding products to cart from search results and view it in cart.
@@ -94,9 +91,8 @@ Feature:ShoppingCartFunctionality
       | Kaiser Flowable Composite Medium 2 X 2g Syringe-Spritze |   1  |  90     |
 
 
-
   Scenario Outline:Adding products to cart from product card
-    And The user records the number of items in the cart.
+    And The user records the number of products in the cart.
     When The user enters the name or part the name of the '<Product>' in the search field  auf Top Menu.
     And The user go to product card.
     Then The user selects the required '<Amount>' of product
@@ -111,9 +107,8 @@ Feature:ShoppingCartFunctionality
       | One Patient Bleaching Kit                  |   1  |
 
 
-
   Scenario Outline:Adding products to cart from product card and view it in cart.
-    And The user records the number of items in the cart.
+    And The user records the number of products in the cart.
     When The user enters the name or part the name of the '<Product>' in the search field  auf Top Menu.
     And The user go to product card.
     Then The user selects the required '<Amount>' of product
@@ -142,9 +137,8 @@ Feature:ShoppingCartFunctionality
       | Terra Root Cem Viscous 8 g Kartusche       |  70  |
 
 
-
   Scenario:Removing products from the cart
-    And The user records the number of items in the cart.
+    And The user records the number of products in the cart.
     When The user searches for and adds several products to the cart
       | Product                                    |Amount|
       | Terra Root Cem Viscous 8 g Kartusche       |   3  |

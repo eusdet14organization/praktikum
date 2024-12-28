@@ -95,8 +95,8 @@ public class ShoppingCartSteps {
         shoppingCartPage.listConfirmDeleteProductButton.getLast().click();
     }
 
-    @And("The user records the number of items in the cart.")
-    public void theUserRecordsTheNumberOfItemsInTheCart() {
+    @And("The user records the number of products in the cart.")
+    public void theUserRecordsTheNumberOfProductsInTheCart() {
         amountProductInCartStart = Integer.parseInt(homePage.amountProductInCart.getText());
     }
 
@@ -189,7 +189,5 @@ public class ShoppingCartSteps {
         }
         return processedData;
     }
-
-
 
 }

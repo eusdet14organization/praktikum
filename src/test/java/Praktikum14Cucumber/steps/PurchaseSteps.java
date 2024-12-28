@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static Praktikum14Cucumber.context.TestContext.getWait;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -21,8 +22,6 @@ public class PurchaseSteps {
     ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
     CheckOutPage checkOutPage = new CheckOutPage();
     PurchaseConfirmationPage confirmationPage = new PurchaseConfirmationPage();
-    WebDriverWait wait = TestContext.getWait();
-
 
 
     @And(" The user clicks on the button buy")
@@ -35,38 +34,39 @@ public class PurchaseSteps {
     public void theSuccessTextIsAppears() {
         compositeProductPage.successBarNotification.isDisplayed();
     }
+
     @And("The user clicks on the button buy")
     public void clickOnTheBuyButtonOnTheFirstCard(){
         compositeProductPage.buttonKaufenCardKaiserBulk.click();
     }
+
     @And ("The user clicks on the button Check out")
     public void clickOnCheckOutButton(){
         shoppingCartPage.checkOutButton.click();
     }
 
 
-
     @And("The user clicks on the button next step on the shipping cart")
     public void theUserClicksOnTheButtonNextStepOnTheShippingCart() {
-        wait.until(ExpectedConditions.elementToBeClickable(checkOutPage.nextStepButtonInTheShippingCard));
+        getWait().until(ExpectedConditions.elementToBeClickable(checkOutPage.nextStepButtonInTheShippingCard));
         checkOutPage.nextStepButtonInTheShippingCard.click();
     }
 
     @And("The user clicks on the button next step on the payment method cart")
     public void theUserClicksOnTheButtonNextStepOnThePaymentMethodCart() {
-        wait.until(ExpectedConditions.elementToBeClickable(checkOutPage.nextStepButtonInThePaymentCard));
+        getWait().until(ExpectedConditions.elementToBeClickable(checkOutPage.nextStepButtonInThePaymentCard));
         checkOutPage.nextStepButtonInThePaymentCard.click();
     }
 
     @And("The user clicks on the button next step on the confirmation cart")
     public void theUserClicksOnTheButtonNextStepOnTheConfirmationCart() {
-        wait.until(ExpectedConditions.elementToBeClickable(checkOutPage.nextStepButtonOrderConfirmation));
+        getWait().until(ExpectedConditions.elementToBeClickable(checkOutPage.nextStepButtonOrderConfirmation));
         checkOutPage.nextStepButtonOrderConfirmation.click();
     }
 
     @Then("The user should see the success text on the top of the page")
     public void theUserShouldSeeTheSuccessTextOnTheTopOfThePage() {
-        wait.until(ExpectedConditions.visibilityOf(confirmationPage.conformationTextOnTheCenterOnThePage));
+        getWait().until(ExpectedConditions.visibilityOf(confirmationPage.conformationTextOnTheCenterOnThePage));
         assertEquals(ConfigurationReader.get("messageSuccessOrder"),
                 confirmationPage.conformationTextOnTheCenterOnThePage.getText());
     }
@@ -81,15 +81,11 @@ public class PurchaseSteps {
         assertTrue(confirmationPage.orderDetailsButton.isDisplayed());
     }
 
-
     @And("The user selects an invoicing address with the {string}")
     public void theUserSelectsAnInvoicingAddressWithThe(String customerName) {
         Select selectAddress = new Select(checkOutPage.selectAddress);
-        String nameFromConF = ConfigurationReader.get(customerName);
-        if (nameFromConF.isEmpty()) {
-            selectAddress.selectByVisibleText(customerName);
-        }else selectAddress.selectByVisibleText(nameFromConF);
+        selectAddress.selectByVisibleText(ConfigurationReader.get(customerName));
 
-        checkOutPage.clickOnButtonNextStepInvoicingcard();
+        checkOutPage.nextStepButtonInTheInvoicingCard.click();
     }
 }
