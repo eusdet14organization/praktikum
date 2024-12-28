@@ -1,4 +1,3 @@
-@ignored
 Feature: Search Functionality
   Background:
     Given The user is on the main page

@@ -1,14 +1,10 @@
 package Praktikum14Cucumber.steps;
 
-import Praktikum14Cucumber.pages.HomePage;
-import Praktikum14Cucumber.pages.ProductPage;
-import Praktikum14Cucumber.pages.RestorativeProduktePage;
-import Praktikum14Cucumber.pages.SearchPage;
+import Praktikum14Cucumber.pages.*;
 import Praktikum14Cucumber.utils.ConfigurationReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -18,13 +14,11 @@ import java.util.List;
 import static Praktikum14Cucumber.utils.DataHelper.*;
 import static Praktikum14Cucumber.context.TestContext.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NavigationBarSteps {
 
     HomePage homePage =new HomePage();
     RestorativeProduktePage restorativeProduktePage = new RestorativeProduktePage();
-    ProductPage productPage = new ProductPage();
     SearchPage searchPage = new SearchPage();
 
     @When("The user moves the mouse on the {string} in the main menu and clicks")

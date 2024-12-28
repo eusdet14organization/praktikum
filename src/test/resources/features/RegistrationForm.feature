@@ -1,4 +1,3 @@
-@ignored
 Feature: Registration Form
   This feature file contains scenarios to validate the functionality of the registration form on the website.
 

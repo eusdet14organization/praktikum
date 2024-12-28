@@ -3,7 +3,7 @@ Feature: Navigation Bar
 
   Background:
     Given The user is on the main page
-  @ignored
+
   Scenario Outline: Verify that the user can also click all links in the main navigation bar
     When The user moves the mouse on the '<name menu>' in the main menu and clicks
     Then The user should be redirected to the '<correct page>' and page have '<correct title>'
@@ -15,11 +15,11 @@ Feature: Navigation Bar
       | Über Uns   | aboutUsUrl   | aboutUsUrlTitle   |
       | Mein Konto | myAccountUrl | myAccountUrlTitle |
       | Kontakt    | contactUrl   | contactUrlTitle   |
-  @ignored
+
   Scenario: Checking that the user can see all submenu items
     When The user moves mouse to the "Restorative Producte" in the main menu
     Then The user must see a submenu appearing
-  @ignored
+
   Scenario Outline: Verify that the user can select the menu item recovery products
     When The user moves mouse to the "Restorative Producte" in the main menu
     And The user selects a '<name DropMenu>' item
@@ -34,8 +34,6 @@ Feature: Navigation Bar
       | Etching               | etchingUrl             | etchingUrlTitle             |
       | Bonding               | gluingUrl              | gluingUrlTitle              |
 
-    #Сценарий для проверки подменю слева и то, что находится по центру
-  @ignored
   Scenario Outline: Verify that the user can also click all links in the left navigation bar of "Restorative Produkte"
     And The User selects "Restorative Produkte" in the main menu
     And The user should be redirected to the Restorative Produkte page and this page have correct title
@@ -50,7 +48,7 @@ Feature: Navigation Bar
       | Liners                | linersUrl              | linersUrlTitle              |
       | Etching               | etchingUrl             | etchingUrlTitle             |
       | Bonding               | gluingUrl              | gluingUrlTitle              |
-  @ignored
+
   Scenario Outline: Verify that the user can also click all links in the center navigation bar with picture of "Restorative Produkte"
     And The User selects "Restorative Produkte" in the main menu
     And The user should be redirected to the Restorative Produkte page and this page have correct title
@@ -66,8 +64,6 @@ Feature: Navigation Bar
       | Etching               | etchingUrl             | etchingUrlTitle             |
       | Bonding               | gluingUrl              | gluingUrlTitle              |
 
-    #Все товары в каждом меню открваются
-  @ignored
   Scenario Outline: The user can open each product in each menu item with a product in the navigation bar ‘Restorative Produkte’
     And The User selects "Restorative Produkte" in the main menu
     And The user select a '<name LeftMenu>' item
@@ -81,38 +77,3 @@ Feature: Navigation Bar
       | Liners                |
       | Etching               |
       | Bonding               |
-  @ignored
-  Scenario: The user can open each product in Composite category
-    And The User selects "Restorative Produkte" in the main menu
-    When The user select a "Composite" item
-    Then The user can opens the card of each product in this section
-  @ignored
-  Scenario: The user can open each product in Bleaching category
-    And The User selects "Restorative Produkte" in the main menu
-    When The user select a "Bleaching" item
-    Then The user can opens the card of each product in this section
-  @ignored
-  Scenario: The user can open each product in Befestigungscomposite category
-    And The User selects "Restorative Produkte" in the main menu
-    When The user select a "Befestigungscomposite" item
-    Then The user can opens the card of each product in this section
-  @ignored
-  Scenario: The user can open each product in Prophy Materials category
-    And The User selects "Restorative Produkte" in the main menu
-    When The user select a "Prophy Materials" item
-    Then The user can opens the card of each product in this section
-  @ignored
-  Scenario: The user can open each product in Liners category
-    And The User selects "Restorative Produkte" in the main menu
-    When The user select a "Liners" item
-    Then The user can opens the card of each product in this section
-  @ignored
-  Scenario: The user can open each product in Etching category
-    And The User selects "Restorative Produkte" in the main menu
-    When The user select a "Etching" item
-    Then The user can opens the card of each product in this section
-  @ignored
-  Scenario: The user can open each product in Bonding category
-    And The User selects "Restorative Produkte" in the main menu
-    When The user select a "Bonding" item
-    Then The user can opens the card of each product in this section
