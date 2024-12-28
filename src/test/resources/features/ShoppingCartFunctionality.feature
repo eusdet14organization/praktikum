@@ -1,4 +1,3 @@
-
 Feature:ShoppingCartFunctionality
 
   Background:
@@ -37,6 +36,7 @@ Feature:ShoppingCartFunctionality
       | Nord Gel 4 X 1,2 ml                        |   2  |
       | Terra Root Cem Viscous 8 g Kartusche       |   5  |
       | One Patient Bleaching Kit                  |   1  |
+
 
 
     Scenario:Adding a specified quantity of multiple products to your cart from search results

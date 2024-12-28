@@ -1,6 +1,5 @@
 package Praktikum14Cucumber.pages;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -38,6 +37,9 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//li[@class='dropdown']/a[text()='Restorative Produkte']")
     public WebElement menuRestorativeProdukte;
+
+    @FindBy(xpath = "//a[@class='dropdown-item']")
+    public List <WebElement> listSubmenuOfRestorativeProdukte;
 
     public WebElement getDropMenuRestorativeProdukte(String nameDropMenu) {
         return getDriver().findElement(By.xpath(

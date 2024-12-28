@@ -3,6 +3,10 @@ package Praktikum14Cucumber.utils;
 
 import Praktikum14Cucumber.dto.User;
 import com.github.javafaker.Faker;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataHelper {
 
@@ -28,4 +32,11 @@ public class DataHelper {
         return user;
     }
 
+    public static List<String> getListStringByListWebElement(List<WebElement> namesOfWebElements) {
+        List<String> actualList = new ArrayList<>();
+        for (WebElement nameOfList : namesOfWebElements) {
+            actualList.add(nameOfList.getText());
+        }
+        return actualList;
+    }
 }
