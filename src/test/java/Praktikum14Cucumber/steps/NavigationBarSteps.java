@@ -1,11 +1,13 @@
 package Praktikum14Cucumber.steps;
 
 import Praktikum14Cucumber.pages.HomePage;
+import Praktikum14Cucumber.pages.ProductPage;
 import Praktikum14Cucumber.pages.RestorativeProduktePage;
 import Praktikum14Cucumber.utils.ConfigurationReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -21,6 +23,7 @@ public class NavigationBarSteps {
 
     HomePage homePage =new HomePage();
     RestorativeProduktePage restorativeProduktePage = new RestorativeProduktePage();
+    ProductPage productPage = new ProductPage();
 
     @When("The user moves the mouse on the {string} in the main menu and clicks")
     public void theUserMovesTheMouseOnTheMenuNameInTheMainMenuAndClicks(String nameMenu) {
@@ -74,18 +77,32 @@ public class NavigationBarSteps {
 
     @When("The user opens the card of each product in this section")
     public void theUserOpensTheCardOfEachProductInThisSection() {
-        for (WebElement nameOfProduct : restorativeProduktePage.productsTitle) {
-            String name = nameOfProduct.getText();
-            nameOfProduct.click();
-            getWait().until(ExpectedConditions.elementToBeClickable(homePage.menuRestorativeProdukte))
-            assertEquals(name,"Dr Müller. " + getDriver().getTitle());
+//        for (WebElement nameOfProduct : restorativeProduktePage.productsTitle) {
+//            String name = nameOfProduct.getText();
+//            nameOfProduct.click();
+//            getWait().until(ExpectedConditions.visibilityOfElementLocated((By)productPage.descriptionProduct));
+//           String pageTitle = getDriver().getTitle();
+//            assert pageTitle != null;
+//            assertTrue(pageTitle.contains(name));
+//            getDriver().navigate().back();
+//        }
+        for (int i = 0; i < restorativeProduktePage.productsTitle.size(); i++) {
+            String nameOfProduct = restorativeProduktePage.productsTitle.get(i).getText();
+            WebElement product = restorativeProduktePage.productsTitle.get(i);
+            product.click();
+            getWait().until(ExpectedConditions.visibilityOfElementLocated((By) productPage.descriptionProduct));
+            String pageTitle = getDriver().getTitle();
+            assert pageTitle != null;
+            assertTrue(pageTitle.contains(nameOfProduct));
+            getDriver().navigate().back();
         }
+
     }
 
     @Then("The card of that product is opened")
     public void theCardOfThatProductIsOpened() {
-        assertTrue(pageTitle.contains(expectedProductTitle));
-        getDriver().navigate().back();
+       // assertTrue(pageTitle.contains(expectedProductTitle));
+     //   getDriver().navigate().back();
     }
 }
 
