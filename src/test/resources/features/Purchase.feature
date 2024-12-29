@@ -20,7 +20,7 @@ Feature: Make a purchase following all purchase steps
         | Product                                    |Amount|
         | Kaiser Nano Komposite Compules 20 X 0,3g   |   1  |
 
-  @ignored
+
   Scenario:As logged user make complete purchase adding a specified quantity of multiple products to your cart from search results and view it in cart.
     When The user searches for and adds several products to the cart
       | Product                                                  |Amount|
@@ -35,7 +35,7 @@ Feature: Make a purchase following all purchase steps
     Then The user should see the success text on the top of the page
     And The order conformation button is displayed
 
-  @ignored
+
     Scenario Outline: As logged user make complete purchase with adding a new shipping address
       When The user enters the name or part the name of the '<Product>' in the search field  auf Top Menu.
       And The user clicks on the button Add to Cart on Product Card <Amount> times
@@ -53,7 +53,7 @@ Feature: Make a purchase following all purchase steps
         | Product               |Amount|
         | Nord Liner 2.5 gr     |   1  |
 
-  @ignored
+
       Scenario Outline: As logged user make complete purchase with adding a new shipping address without city field
         When The user enters the name or part the name of the '<Product>' in the search field  auf Top Menu.
         And The user clicks on the button Add to Cart on Product Card <Amount> times
