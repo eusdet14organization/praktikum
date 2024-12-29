@@ -25,4 +25,7 @@ public class ShoppingCartPage extends BasePage{
     @FindBy(xpath = "//button[@id='BtnConfirmOk']")
     public List<WebElement> listConfirmDeleteProductButton;
 
+    @FindBy(xpath = "//*[@id='checkout']")
+    public WebElement checkOutButton;
+
 }
