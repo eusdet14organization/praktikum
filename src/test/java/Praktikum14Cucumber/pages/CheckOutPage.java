@@ -15,6 +15,9 @@ public class CheckOutPage extends BasePage{
     @FindBy(xpath = "//*[@id='BillingNewAddress_CountryId']/option[@value='84']")
     public WebElement selectGermanyCountry;
 
+    @FindBy(xpath = "//*[@id='BillingNewAddress_StateProvinceId']/option[@value='347']")
+    public WebElement selectBayernProvince;
+
     @FindBy(xpath = "//*[@id='BillingNewAddress_City']")
     public WebElement inputFieldCity;
 
@@ -45,6 +48,10 @@ public class CheckOutPage extends BasePage{
 
     @FindBy(xpath = "//select[@id='billing-address-select']")
     public WebElement selectAddress;
+    @FindBy(xpath = "//span[@data-valmsg-for='BillingNewAddress.City']")
+    public WebElement cityRequiredErrorMessage;
+
+
 
 
    /* public WebElement selectInvoicingAddressWithAlreadyExistingData(String invoicingName) {

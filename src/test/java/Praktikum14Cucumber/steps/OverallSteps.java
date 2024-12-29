@@ -23,10 +23,10 @@ public class OverallSteps {
         assertTrue(homePage.companyLogo.isDisplayed());
     }
 
-    @Given("The user is logged")
-    public void theUserIsLogged() throws InterruptedException {
+    @Given("The user is logged with {string} and {string}")
+    public void theUserIsLogged(String userEmail, String userPassword) throws InterruptedException {
         homePage.loginUser.click();
-        accountPage.fillOutTheLogInFormWithData();
+        accountPage.fillOutTheLogInFormWithData(userEmail,userPassword);
         accountPage.clickOnLogInButton();
         WebDriverWait wait = TestContext.getWait();
         wait.until(ExpectedConditions.visibilityOf(accountPage.logOutButton));

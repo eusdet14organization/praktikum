@@ -46,12 +46,12 @@ public class MyAccountPage extends BasePage {
         Thread.sleep(2000);
     }
 
-    public void fillOutTheLogInFormWithData() throws InterruptedException {
-        for (char ch : ConfigurationReader.get("eMail").toCharArray()) {
+    public void fillOutTheLogInFormWithData (String userEmail, String userPassword) throws InterruptedException {
+        for (char ch : ConfigurationReader.get(userEmail).toCharArray()) {
             eMail.sendKeys(String.valueOf(ch));
             Thread.sleep(300);
         }
-        for (char ch : ConfigurationReader.get("password").toCharArray()) {
+        for (char ch : ConfigurationReader.get(userPassword).toCharArray()) {
             password.sendKeys(String.valueOf(ch));
             Thread.sleep(300);
         }
