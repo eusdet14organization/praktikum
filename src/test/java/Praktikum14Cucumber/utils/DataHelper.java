@@ -1,6 +1,7 @@
 package Praktikum14Cucumber.utils;
 
 
+import Praktikum14Cucumber.dto.Address;
 import Praktikum14Cucumber.dto.User;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
@@ -38,5 +39,16 @@ public class DataHelper {
             actualList.add(nameOfList.getText());
         }
         return actualList;
+    }
+
+    public static Address addressForNewUser(){
+       Address address = new Address();
+        address.setCountry(faker.address().country());
+        address.setCity(faker.address().city());
+        address.setProvince(faker.address().city());
+        address.setStreet(faker.address().streetAddress());
+        address.setZipCode(faker.address().zipCode());
+        address.setPhoneNumber(faker.phoneNumber().phoneNumber());
+        return address;
     }
 }

@@ -18,6 +18,10 @@ public class MyAccountPageSteps {
         assertTrue(accountPage.logOutButton.isDisplayed());
     }
 
+    @And("The user filling out the login form with email {string} and password {string}")
+    public void fillingOutTheLoginForm(String userEmail, String userPassword) throws InterruptedException {
+        accountPage.fillOutTheLogInFormWithData(userEmail,userPassword);
+    }
     @And ("The user should see the title on the Log in page")
     public void getTextFromLogInPage(){
         accountPage.getTextTitel();
