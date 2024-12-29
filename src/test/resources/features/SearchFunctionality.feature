@@ -1,4 +1,3 @@
-@ignored
 Feature: Search Functionality
   Background:
     Given The user is on the main page
@@ -14,7 +13,6 @@ Feature: Search Functionality
       | Nord Faste                |
 
 
-
   Scenario Outline:Search for products via search page
     And The user go to Search Page
     When The user enters the name or part the name of the '<Product>' in the search field.
@@ -26,7 +24,6 @@ Feature: Search Functionality
       | Nord Gel 4 X 1,2 ml                   |
       | Terra Root Cem Viscous 8 g Kartusche  |
       | Nord Bonding                          |
-
 
 
   Scenario Outline:Advanced search for products by description
@@ -59,7 +56,7 @@ Feature: Search Functionality
       | Kaiser Flowable Composite |Restorative Produkte                    |
 
 
-  Scenario Outline:Advanced search for products by Category
+  Scenario Outline:Advanced search for products by Untercategory
     And The user go to Search Page
     When The user enters the name or part the name of the '<Product>' in the search field.
     And The user marks the field "Erweiterte Suche"

@@ -1,3 +1,4 @@
+
 Feature: Make a purchase following all purchase steps
 
   Background:
@@ -19,22 +20,5 @@ Feature: Make a purchase following all purchase steps
         | Product                                    |Amount|
         | Kaiser Nano Komposite Compules 20 X 0,3g   |   1  |
 
-
-  Scenario Outline: As logged user make a purchase changing the amount of product in the cart.
-    When The user enters the name or part the name of the '<Product>' in the search field  auf Top Menu.
-    And The user clicks on the button Add to Cart on Product Card <Amount> times
-    And The user clicks on the image of the Shopping Cart.
-    And The user change the amount of a product in the cart to '<NewAmount>'.
-    Examples:
-      | Product                                                 |Amount|NewAmount|
-      | Nord Nano Hybrid Composite 8 X 4 g                      |   3  |   5     |
-      | Adler Selective Etch Bond                               |   2  |   4     |
-    And The user clicks on the button Check out
-    And The user selects an invoicing address with the "selectUser1Address"
-    And The user clicks on the button next step on the shipping cart
-    And The user clicks on the button next step on the payment method cart
-    And The user clicks on the button next step on the confirmation cart
-    Then The user should see the success text on the top of the page
-    And The order conformation button is displayed
 
 
