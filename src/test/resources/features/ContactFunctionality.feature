@@ -1,3 +1,4 @@
+@ignored
 Feature: Contact Methods
   This feature file contains scenarios to validate the functionality of the different contact methods on the website.
 

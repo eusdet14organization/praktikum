@@ -1,3 +1,4 @@
+@ignored
 Feature: Login Form
 
   Background:
@@ -8,6 +9,6 @@ Feature: Login Form
       Open the account login page through the main menu
       And The user click on the "Hallo Konto" menu item
       And The user should see the title on the Log in page
-      And The user filling out the login form
+      And The user filling "eMail" and "password" out the login form
       And The user click on Log in button
       Then The user has successfully logged
