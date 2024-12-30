@@ -29,7 +29,6 @@ public class FooterSteps {
     @And("The user enters an {string} in the subscription field")
     public void theUserEntersAnEmailInTheSubscriptionField(String email) {
        homePage.inputEmailSubscriptionField.sendKeys(email);
-
     }
 
     @And("The user click Subscribe button")
@@ -37,14 +36,11 @@ public class FooterSteps {
         homePage.newsletterSubscribeButton.click();
     }
 
-
-
     @Then("The user checks that the {string} matches")
     public void theUserChecksThatThePageTitleMatchesLinkTitle(String titlePage) {
         assertEquals(titlePage, shoppingCartPage.namePage.getText());
         assertEquals(titlePage, shoppingCartPage.nameActivePage.getText());
     }
-
 
     @Then("The user sees the {string}")
     public void theUserSeesTheMessage(String message) {

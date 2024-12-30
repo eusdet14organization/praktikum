@@ -6,11 +6,11 @@ import Praktikum14Cucumber.utils.ConfigurationReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 
+import static Praktikum14Cucumber.context.TestContext.getActions;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MyAccountPageSteps {
     MyAccountPage accountPage = new MyAccountPage();
-
 
     @Then("The user has successfully logged")
     public void theUserIsLogged() throws InterruptedException {
@@ -22,13 +22,14 @@ public class MyAccountPageSteps {
     public void fillingOutTheLoginForm(String userEmail, String userPassword) throws InterruptedException {
         accountPage.fillOutTheLogInFormWithData(userEmail,userPassword);
     }
+
     @And ("The user should see the title on the Log in page")
     public void getTextFromLogInPage(){
         accountPage.getTextTitel();
     }
     @And ("The user click on Log in button")
-    public void onLogInButnClick() throws InterruptedException {
-        accountPage.clickOnLogInButton();
+    public void onLogInButnClick() {
+        getActions().moveToElement(accountPage.logInButton).click().perform();
     }
 
     @And("The user filling {string} and {string} out the login form")
@@ -42,4 +43,5 @@ public class MyAccountPageSteps {
             Thread.sleep(2000);
         }
     }
+
 }

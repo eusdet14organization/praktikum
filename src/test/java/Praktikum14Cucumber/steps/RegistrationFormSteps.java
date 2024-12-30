@@ -46,14 +46,14 @@ public class RegistrationFormSteps {
     public void theUserShouldBeRedirectedToTheRegistrationPage() {
         assertEquals(TestContext.getDriver().getCurrentUrl(),
                 ConfigurationReader.get("logInUrl"));
-        assertEquals(TestContext.getDriver().getTitle(),
-                "Dr Müller. Registrierung");
+        assertEquals("Dr Müller. Registrierung",
+                TestContext.getDriver().getTitle());
     }
 
     @And("The name of registration form should be displayed")
     public void theNameOfRegistrationFormShouldBeDisplayed() {
-        assertEquals(registrationFormPage.titleH1.getText(),
-                "Registrierung");
+        assertEquals("Registrierung",
+                registrationFormPage.titleH1.getText());
     }
 
     @And("The form should include the following fields")

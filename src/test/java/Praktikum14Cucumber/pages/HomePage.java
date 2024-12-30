@@ -79,17 +79,5 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//span[@class='navbar-tool-label'][text()]")
     public WebElement amountProductInCart;
 
-    @FindBy(xpath = "//a[@class='navbar-tool-text'][text()]")
-    public WebElement sumProductInCart;
-
-    @FindBy(xpath = "//a[@class='btn btn-success btn-sm'][text()='Zum Warenkorb']")
-    public WebElement dropDownMenuGoToCartButton;
-
-    @FindBy(xpath = "//span[@class='text-accent font-size-base ml-1'][text()]")
-    public WebElement getDropDownMenuSum;
-
-    @FindBy(xpath = "//a[@class='d-block mr-2']/img[@alt]")
-    public List<WebElement> nameProductInCart;
-
 
 }
