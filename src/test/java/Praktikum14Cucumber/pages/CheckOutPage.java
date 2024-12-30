@@ -1,14 +1,8 @@
 package Praktikum14Cucumber.pages;
 
-import Praktikum14Cucumber.context.TestContext;
-import com.github.javafaker.Faker;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static Praktikum14Cucumber.context.TestContext.getDriver;
 
 public class CheckOutPage extends BasePage{
 
@@ -42,7 +36,6 @@ public class CheckOutPage extends BasePage{
     @FindBy(xpath = "//div[@id='payment-info-buttons-container']//button[@class='btn btn-primary']")
     public WebElement nextStepButtonInThePaymentCard;
 
-
     @FindBy(xpath = "//div[@id='confirm-order-buttons-container']//button[@class='btn btn-primary']")
     public WebElement nextStepButtonOrderConfirmation;
 
@@ -51,12 +44,5 @@ public class CheckOutPage extends BasePage{
     @FindBy(xpath = "//span[@data-valmsg-for='BillingNewAddress.City']")
     public WebElement cityRequiredErrorMessage;
 
-
-
-
-   /* public WebElement selectInvoicingAddressWithAlreadyExistingData(String invoicingName) {
-        return getDriver().findElement(By.xpath(
-                String.format("//select[@id='billing-address-select']/option[contains(text(),'%s')]", invoicingName)));
-    }*/
 
 }

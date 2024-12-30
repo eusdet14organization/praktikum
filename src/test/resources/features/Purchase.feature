@@ -4,6 +4,7 @@ Feature: Make a purchase following all purchase steps
   Background:
     Given The user is logged by "eMail1" and "password1"
 
+
     Scenario Outline: As logged user make complete purchase
       When The user enters the name or part the name of the '<Product>' in the search field  auf Top Menu.
       And The user clicks on the button Add to Cart on Product Card <Amount> times

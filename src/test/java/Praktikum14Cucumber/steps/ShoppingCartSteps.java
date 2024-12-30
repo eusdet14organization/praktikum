@@ -80,8 +80,7 @@ public class ShoppingCartSteps {
         for (Cart cart:carts){
             searchSteps.theUserEntersTheNameOrPartTheNameOfTheProductInTheSearchFieldAufTopMenu(cart.getNameProduct());
             searchPage.listNameProduct.getFirst().click();
-            Select amountProduct = new Select(productPage.selectAmountProduct);
-            amountProduct.selectByVisibleText(cart.getAmount());
+            searchPageHelp.selectSorting(productPage.selectAmountProduct,cart.getAmount());
             productPage.addToCartButton.click();
             searchPage.closeMessageButton.click();
             amountProductAddToCart = amountProductAddToCart + Integer.parseInt(cart.getAmount());
@@ -125,8 +124,7 @@ public class ShoppingCartSteps {
 
     @And("The user change the amount of a product in the cart to {string}.")
     public void theUserChangeTheAmountOfAProductInTheCartToNewAmount(String newAmount) {
-        Select amountProductSelect = new Select(shoppingCartPage.listSelectAmountProduct.getFirst());
-        amountProductSelect.selectByVisibleText(newAmount);
+        searchPageHelp.selectSorting(shoppingCartPage.listSelectAmountProduct.getFirst(),newAmount);
     }
 
     @And("The user go to product card.")
@@ -141,7 +139,6 @@ public class ShoppingCartSteps {
         getWait().until(ExpectedConditions.invisibilityOf(searchPage.windowsNotification));
     }
 
-
     @Then("The user goes to the Cart page.")
     public void theUserGoesToTheCartPage() {
         assertTrue(shoppingCartPage.namePage.isDisplayed());
@@ -150,14 +147,12 @@ public class ShoppingCartSteps {
         assertEquals("Warenkorb", shoppingCartPage.nameActivePage.getText());
     }
 
-
     @Then("The user checks the amount product in the cart using the information in the main menu.")
     public void theUserChecksTheAmountProductInTheCartUsingTheInformationInTheMainMenu() {
         assertTrue(homePage.amountProductInCart.isDisplayed());
         assertEquals(amountProductAddToCart,
                 Integer.parseInt(homePage.amountProductInCart.getText())- amountProductInCartStart);
     }
-
 
     @Then("The user checks the name {string} and {int}  in the cart.")
     public void theUserChecksTheNameProductAndAmountInTheCart(String nameProduct, int amountProduct) {
@@ -172,12 +167,10 @@ public class ShoppingCartSteps {
                 searchPageHelp.getAmountBySelect(shoppingCartPage.listSelectAmountProduct)));
     }
 
-
     @Then("The user selects the required {string} of product")
     public void theUserSelectsTheRequiredAmountOfProduct(String amount) {
         amountProductAddToCart=Integer.parseInt(amount);
-        Select amountProductToCart = new Select(productPage.selectAmountProduct);
-        amountProductToCart.selectByVisibleText(amount);
+        searchPageHelp.selectSorting(productPage.selectAmountProduct,amount);
     }
 
     public Map<String,String> getDataTable(Map<String,String> dataTable) {
