@@ -9,6 +9,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static Praktikum14Cucumber.context.TestContext.getActions;
+import static Praktikum14Cucumber.context.TestContext.getWait;
+
 public class MyAccountPage extends BasePage {
     //Returning Customer page
     @FindBy(xpath = "//h1[@class='h3 text-light mb-0']")
@@ -36,24 +39,20 @@ public class MyAccountPage extends BasePage {
 
 
     public void clickOnLogInButton() throws InterruptedException {
-        WebDriverWait wait = TestContext.getWait();
-        wait.until(ExpectedConditions.elementToBeClickable(logInButton));
-        Actions actions = TestContext.getActions();
-        actions.moveToElement(logInButton).click().perform();
-
-
-       // logInButton.click();
-        Thread.sleep(2000);
+        getWait().until(ExpectedConditions.elementToBeClickable(logInButton));
+        getActions().moveToElement(logInButton).click().perform();
+        Thread.sleep(400);
     }
 
-    public void fillOutTheLogInFormWithData() throws InterruptedException {
-        for (char ch : ConfigurationReader.get("eMail").toCharArray()) {
+    public void fillOutTheLogInFormWithData(String email, String passwordIn) throws InterruptedException {
+
+        for (char ch : ConfigurationReader.get(email).toCharArray()) {
             eMail.sendKeys(String.valueOf(ch));
-            Thread.sleep(300);
+            Thread.sleep(500);
         }
-        for (char ch : ConfigurationReader.get("password").toCharArray()) {
+        for (char ch : ConfigurationReader.get(passwordIn).toCharArray()) {
             password.sendKeys(String.valueOf(ch));
-            Thread.sleep(300);
+            Thread.sleep(400);
         }
     }
 

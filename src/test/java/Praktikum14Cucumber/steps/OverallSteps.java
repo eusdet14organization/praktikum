@@ -6,11 +6,11 @@ import Praktikum14Cucumber.pages.MyAccountPage;
 import Praktikum14Cucumber.utils.ConfigurationReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
+import static Praktikum14Cucumber.context.TestContext.getActions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -23,15 +23,7 @@ public class OverallSteps {
         assertTrue(homePage.companyLogo.isDisplayed());
     }
 
-    @Given("The user is logged")
-    public void theUserIsLogged() throws InterruptedException {
-        homePage.loginUser.click();
-        accountPage.fillOutTheLogInFormWithData();
-        accountPage.clickOnLogInButton();
-        WebDriverWait wait = TestContext.getWait();
-        wait.until(ExpectedConditions.visibilityOf(accountPage.logOutButton));
-        assertTrue(accountPage.titleH1.isDisplayed());
-    }
+
     @And("The user should be redirected on the {string}")
     public void checkTheActualUrl(String expectedUrl){
         String urlLowerCaseWithoutSpace = expectedUrl.replace(" ", "").toLowerCase();
@@ -39,4 +31,23 @@ public class OverallSteps {
                 ConfigurationReader.get(urlLowerCaseWithoutSpace));
     }
 
+    @Given("The user is logged by {string} and {string}")
+    public void theUserIsLoggedByAnd(String email, String password) throws InterruptedException {
+        homePage.loginUser.click();
+        accountPage.fillOutTheLogInFormWithData(email,password);
+        accountPage.clickOnLogInButton();
+        assertTrue(accountPage.titleH1.isDisplayed());
+    }
+
+    @And("The return to Home page")
+    public void theReturnToHomePage () {
+        getActions().moveToElement(homePage.companyLogo).click().perform();
+        homePage.getMeinMenu("Startseite").click();
+    }
+
+    @And("The return to Home page EN")
+    public void theReturnToHomePageEN() {
+        getActions().moveToElement(homePage.companyLogo).click().perform();
+        homePage.getMeinMenu("Home page").click();
+    }
 }

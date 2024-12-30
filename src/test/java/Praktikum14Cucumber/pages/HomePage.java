@@ -66,6 +66,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//input[@id='newsletter-subscribe-button']")
     public WebElement newsletterSubscribeButton;
 
+    @FindBy(xpath = "//div[@id='newsletter-result-block'][text()]")
+    public WebElement messageNewsLetter;
+
     //CartMenu
     @FindBy(xpath = "//div[@id='flyout-cart']/a[contains(@class, 'navbar-tool-icon-box')]")
     public WebElement imagesCart;
