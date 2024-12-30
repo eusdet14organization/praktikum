@@ -8,6 +8,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DriverFactory {
     public static WebDriver get() {
@@ -18,6 +20,13 @@ public class DriverFactory {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--disable-search-engine-choice-screen");
+                options.addArguments("--disable-popup-blocking");
+                options.addArguments("--disable-notifications");
+                options.addArguments("--disable-extensions");
+                options.addArguments("--ignore-autocomplete-off-autofill");
+                Map<String, Object> prefs = new HashMap<String, Object>();
+                prefs.put("autofill.profile_enabled", false);
+                options.setExperimentalOption("prefs", prefs);
                 if (ConfigurationReader.get("headless").equalsIgnoreCase("true")) {
                     options.addArguments("--headless");
                 }

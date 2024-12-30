@@ -1,3 +1,4 @@
+
 Feature: Language Switcher
   As a user, I want to switch the website language between English and German using the Language Switcher.
 
