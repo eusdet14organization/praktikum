@@ -2,7 +2,7 @@
 Feature: Make a purchase following all purchase steps
 
   Background:
-    Given The user is logged by "eMail1" and "password1"
+    Given The user is logged by "eMail" and "password"
 
 
     Scenario Outline: As logged user make complete purchase

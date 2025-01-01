@@ -23,10 +23,17 @@ public class DriverFactory {
                 options.addArguments("--disable-popup-blocking");
                 options.addArguments("--disable-notifications");
                 options.addArguments("--disable-extensions");
-                options.addArguments("--ignore-autocomplete-off-autofill");
-                Map<String, Object> prefs = new HashMap<String, Object>();
+                options.addArguments("--disable-save-password-bubble");
+                options.addArguments("--disable-autofill-keyboard-accessory-view");
+                Map<String, Object> prefs = new HashMap<>();
+                prefs.put("profile.default_content_setting_values.autofill", 2); // Disable autofill
+                prefs.put("credentials_enable_service", false); // Disable password manager
+                prefs.put("profile.password_manager_enabled", false);
                 prefs.put("autofill.profile_enabled", false);
+
+                // Add preferences to ChromeOptions
                 options.setExperimentalOption("prefs", prefs);
+
                 if (ConfigurationReader.get("headless").equalsIgnoreCase("true")) {
                     options.addArguments("--headless");
                 }
