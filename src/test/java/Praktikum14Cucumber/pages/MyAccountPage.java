@@ -27,21 +27,25 @@ public class MyAccountPage extends BasePage {
 
     @FindBy(xpath = "//button[@class='btn btn-success col-12']")
     public WebElement registerButton;
+
     @FindBy(xpath = "//a[@class='btn btn-primary btn-sm']")
     public WebElement logOutButton;
+
+    @FindBy(xpath = "//h6[@class='font-size-base text-light mb-0']")
+    public WebElement  nameSubPage;
 
 
     public void fillOutTheLogInFormWithData(String email, String passwordIn) throws InterruptedException {
 
         for (char ch : ConfigurationReader.get(email).toCharArray()) {
             eMail.sendKeys(String.valueOf(ch));
-            Thread.sleep(200);
+            Thread.sleep(400);
         }
         for (char ch : ConfigurationReader.get(passwordIn).toCharArray()) {
             password.sendKeys(String.valueOf(ch));
-            Thread.sleep(300);
+            Thread.sleep(500);
         }
-        Thread.sleep(1000);
+        Thread.sleep(900);
     }
 
     public void getTextTitel () {
