@@ -39,13 +39,13 @@ public class MyAccountPage extends BasePage {
 
         for (char ch : ConfigurationReader.get(email).toCharArray()) {
             eMail.sendKeys(String.valueOf(ch));
-            Thread.sleep(400);
+            Thread.sleep(300);
         }
         for (char ch : ConfigurationReader.get(passwordIn).toCharArray()) {
             password.sendKeys(String.valueOf(ch));
-            Thread.sleep(500);
+            Thread.sleep(400);
         }
-        Thread.sleep(900);
+        Thread.sleep(1000);
     }
 
     public void getTextTitel () {

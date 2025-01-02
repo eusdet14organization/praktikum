@@ -35,10 +35,3 @@ Feature: Contact Methods
       | Anfrage :     |
     And The form should include a Submit button
 
-
-
-
-
-
-
-
