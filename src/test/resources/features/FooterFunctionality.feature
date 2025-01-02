@@ -1,4 +1,4 @@
-@ignored
+
 Feature:FooterFunctionality
 
   Background:
@@ -103,6 +103,7 @@ Feature:FooterFunctionality
     And The user enters an Email in the subscription field
     And The user click Subscribe button
     Then The user sees the 'messageNewLetterEN'
+
 
   Scenario Outline:Checking subscription activation from the footer, English version of the site,for the wrong Email..
     When The user click on "EN" in the top menu

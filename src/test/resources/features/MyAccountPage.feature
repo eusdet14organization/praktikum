@@ -1,7 +1,9 @@
+
 Feature: Login Form
 
   Background:
     Given The user is on the main page
+
 
     Scenario: User is logged
       Verify that the user has successfully logged

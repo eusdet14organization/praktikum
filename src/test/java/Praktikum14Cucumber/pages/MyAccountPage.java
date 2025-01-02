@@ -1,16 +1,9 @@
 package Praktikum14Cucumber.pages;
 
-
-import Praktikum14Cucumber.context.TestContext;
 import Praktikum14Cucumber.utils.ConfigurationReader;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static Praktikum14Cucumber.context.TestContext.getActions;
-import static Praktikum14Cucumber.context.TestContext.getWait;
 
 public class MyAccountPage extends BasePage {
     //Returning Customer page
@@ -38,27 +31,21 @@ public class MyAccountPage extends BasePage {
     public WebElement logOutButton;
 
 
-    public void clickOnLogInButton() throws InterruptedException {
-        getWait().until(ExpectedConditions.elementToBeClickable(logInButton));
-        getActions().moveToElement(logInButton).click().perform();
-        Thread.sleep(400);
-    }
-
     public void fillOutTheLogInFormWithData(String email, String passwordIn) throws InterruptedException {
 
         for (char ch : ConfigurationReader.get(email).toCharArray()) {
             eMail.sendKeys(String.valueOf(ch));
-            Thread.sleep(500);
+            Thread.sleep(200);
         }
         for (char ch : ConfigurationReader.get(passwordIn).toCharArray()) {
             password.sendKeys(String.valueOf(ch));
-            Thread.sleep(400);
+            Thread.sleep(300);
         }
+        Thread.sleep(1000);
     }
-
-
 
     public void getTextTitel () {
         titleH1.isDisplayed();
     }
+
 }

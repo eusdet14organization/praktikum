@@ -5,6 +5,7 @@ Feature: Navigation Bar
   Background:
     Given The user is on the main page
 
+
   Scenario Outline: Verify that the user can also click all links in the main navigation bar
     When The user moves the mouse on the '<name menu>' in the main menu and clicks
     Then The user should be redirected to the '<correct page>' and page have '<correct title>'
@@ -17,9 +18,11 @@ Feature: Navigation Bar
       | Mein Konto | myAccountUrl | myAccountUrlTitle |
       | Kontakt    | contactUrl   | contactUrlTitle   |
 
+
   Scenario: Checking that the user can see all submenu items
     When The user moves mouse to the "Restorative Producte" in the main menu
     Then The user must see a submenu appearing
+
 
   Scenario Outline: Verify that the user can select the menu item recovery products
     When The user moves mouse to the "Restorative Producte" in the main menu
@@ -34,6 +37,7 @@ Feature: Navigation Bar
       | Liners                | linersUrl              | linersUrlTitle              |
       | Etching               | etchingUrl             | etchingUrlTitle             |
       | Bonding               | gluingUrl              | gluingUrlTitle              |
+
 
   Scenario Outline: Verify that the user can also click all links in the left navigation bar of "Restorative Produkte"
     And The User selects "Restorative Produkte" in the main menu
@@ -50,6 +54,7 @@ Feature: Navigation Bar
       | Etching               | etchingUrl             | etchingUrlTitle             |
       | Bonding               | gluingUrl              | gluingUrlTitle              |
 
+
   Scenario Outline: Verify that the user can also click all links in the center navigation bar with picture of "Restorative Produkte"
     And The User selects "Restorative Produkte" in the main menu
     And The user should be redirected to the Restorative Produkte page and this page have correct title
@@ -64,6 +69,7 @@ Feature: Navigation Bar
       | Liners                | linersUrl              | linersUrlTitle              |
       | Etching               | etchingUrl             | etchingUrlTitle             |
       | Bonding               | gluingUrl              | gluingUrlTitle              |
+
 
   Scenario Outline: The user can open each product in each menu item with a product in the navigation bar ‘Restorative Produkte’
     And The User selects "Restorative Produkte" in the main menu

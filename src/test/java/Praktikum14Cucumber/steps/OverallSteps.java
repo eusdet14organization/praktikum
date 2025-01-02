@@ -7,10 +7,9 @@ import Praktikum14Cucumber.utils.ConfigurationReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 
 import static Praktikum14Cucumber.context.TestContext.getActions;
+import static Praktikum14Cucumber.context.TestContext.getWait;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -23,7 +22,6 @@ public class OverallSteps {
         assertTrue(homePage.companyLogo.isDisplayed());
     }
 
-
     @And("The user should be redirected on the {string}")
     public void checkTheActualUrl(String expectedUrl){
         String urlLowerCaseWithoutSpace = expectedUrl.replace(" ", "").toLowerCase();
@@ -35,7 +33,8 @@ public class OverallSteps {
     public void theUserIsLoggedByAnd(String email, String password) throws InterruptedException {
         homePage.loginUser.click();
         accountPage.fillOutTheLogInFormWithData(email,password);
-        accountPage.clickOnLogInButton();
+        getActions().moveToElement(accountPage.logInButton).click().perform();
+        getWait().until(ExpectedConditions.visibilityOf(accountPage.logOutButton));
         assertTrue(accountPage.titleH1.isDisplayed());
     }
 

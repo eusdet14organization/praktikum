@@ -5,9 +5,11 @@ Feature: Language Switcher
   Background:
     Given The user is on the main page
 
+
   Scenario: Language availability
     When I hover the mouse over the Language switcher
     Then I see a choose of two languages with country flags: English and German
+
 
   Scenario Outline:Switch language
     When The user click on '<language>' in the top menu
@@ -26,6 +28,7 @@ Feature: Language Switcher
       | language | Text       |
       | DE       | Startseite |
       | En       | Home page  |
+
 
   Scenario: Verify language persistence after navigation
     When The user switch the language to German
