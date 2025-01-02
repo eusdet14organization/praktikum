@@ -3,12 +3,6 @@ package Praktikum14Cucumber.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-
 public class ContactPage extends BasePage{
     @FindBy(xpath = "//h3[text()='Address']")
     public WebElement address;
