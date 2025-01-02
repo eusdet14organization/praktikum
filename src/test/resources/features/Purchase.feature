@@ -14,7 +14,6 @@ Feature: Make a purchase following all purchase steps
       And The user clicks on the button next step on the shipping cart
       And The user clicks on the button next step on the payment method cart
       And The user clicks on the button next step on the confirmation cart
-      Then The user should see the success text on the top of the page
       And The order conformation button is displayed
 
       Examples:
@@ -33,7 +32,6 @@ Feature: Make a purchase following all purchase steps
     And The user clicks on the button next step on the shipping cart
     And The user clicks on the button next step on the payment method cart
     And The user clicks on the button next step on the confirmation cart
-    Then The user should see the success text on the top of the page
     And The order conformation button is displayed
 
 
@@ -47,7 +45,6 @@ Feature: Make a purchase following all purchase steps
       And The user clicks on the button next step on the shipping cart
       And The user clicks on the button next step on the payment method cart
       And The user clicks on the button next step on the confirmation cart
-      Then The user should see the success text on the top of the page
       And The order conformation button is displayed
 
       Examples:

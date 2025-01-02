@@ -124,7 +124,6 @@ Feature:ShoppingCartFunctionality
       | Nord Flow Composite 2 g                          |   5  |
       | Nord Gel 4 X 1,2 ml                              |   1  |
 
-
   Scenario:Adding a specified quantity of multiple products to your cart  from product card and view it in cart.
     When The user searches for and adds several products to the cart from product card.
       | Product                                    |Amount|
