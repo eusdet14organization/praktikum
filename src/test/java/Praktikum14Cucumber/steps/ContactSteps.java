@@ -34,6 +34,8 @@ public class ContactSteps {
        assertTrue(contactPage.whatsApp.isDisplayed());
        assertTrue(contactPage.phone.isDisplayed());
        assertTrue(contactPage.emailAddresses.isDisplayed());
+
+
        assertTrue(contactPage.formFields.isDisplayed());
     }
 
