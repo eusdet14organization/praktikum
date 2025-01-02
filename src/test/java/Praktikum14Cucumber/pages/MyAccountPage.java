@@ -27,8 +27,12 @@ public class MyAccountPage extends BasePage {
 
     @FindBy(xpath = "//button[@class='btn btn-success col-12']")
     public WebElement registerButton;
+
     @FindBy(xpath = "//a[@class='btn btn-primary btn-sm']")
     public WebElement logOutButton;
+
+    @FindBy(xpath = "//h6[@class='font-size-base text-light mb-0']")
+    public WebElement  nameSubPage;
 
 
     public void fillOutTheLogInFormWithData(String email, String passwordIn) throws InterruptedException {
