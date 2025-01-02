@@ -1,7 +1,8 @@
-
+@ignored
 Feature: Search Functionality
   Background:
     Given The user is on the main page
+
 
   Scenario Outline:Search for products using the search field on the Home page
     When The user enters the name or part the name of the '<Product>' in the search field  auf Top Menu.

@@ -1,54 +1,31 @@
 package Praktikum14Cucumber.steps;
 
-import Praktikum14Cucumber.context.TestContext;
 import Praktikum14Cucumber.dto.Address;
 import Praktikum14Cucumber.pages.CheckOutPage;
-import Praktikum14Cucumber.pages.CompositeProductPage;
 import Praktikum14Cucumber.pages.PurchaseConfirmationPage;
 import Praktikum14Cucumber.pages.ShoppingCartPage;
 import Praktikum14Cucumber.utils.ConfigurationReader;
 import Praktikum14Cucumber.utils.DataHelper;
+import Praktikum14Cucumber.utils.SearchPageHelp;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static Praktikum14Cucumber.context.TestContext.getDriver;
 import static Praktikum14Cucumber.context.TestContext.getWait;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PurchaseSteps {
 
-    CompositeProductPage compositeProductPage = new CompositeProductPage();
     ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
     CheckOutPage checkOutPage = new CheckOutPage();
     PurchaseConfirmationPage confirmationPage = new PurchaseConfirmationPage();
+    SearchPageHelp searchPageHelp = new SearchPageHelp();
 
-
-    @And(" The user clicks on the button buy")
-    public void theUserClickOnTheBuyButtonInTheFirstCart() {
-        compositeProductPage.checkIfTheFirstCardIsAvailable();
-        compositeProductPage.clickOnKaufenButton();
-    }
-
-    @And("The user should see the success adding the product on the cart")
-    public void theSuccessTextIsAppears() {
-        compositeProductPage.successBarNotification.isDisplayed();
-    }
-
-    @And("The user clicks on the button buy")
-    public void clickOnTheBuyButtonOnTheFirstCard(){
-        compositeProductPage.buttonKaufenCardKaiserBulk.click();
-    }
 
     @And ("The user clicks on the button Check out")
     public void clickOnCheckOutButton(){
         shoppingCartPage.checkOutButton.click();
     }
-
 
     @And("The user clicks on the button next step on the shipping cart")
     public void theUserClicksOnTheButtonNextStepOnTheShippingCart() {
@@ -75,10 +52,6 @@ public class PurchaseSteps {
                 confirmationPage.conformationTextOnTheCenterOnThePage.getText());
     }
 
-    @And("The user should see the success text in the middle on the page")
-    public void theUserShouldSeeTheSuccessTextInTheMiddleOnThePage() {
-        assertTrue(confirmationPage.confirmationTextOnTheTopOnThePage.isDisplayed());
-    }
 
     @And("The order conformation button is displayed")
     public void theOrderConformationButtonIsDisplayed() {
@@ -87,15 +60,15 @@ public class PurchaseSteps {
 
     @And("The user selects an invoicing address with the {string}")
     public void theUserSelectsAnInvoicingAddressWithThe(String customerName) {
-        Select selectAddress = new Select(checkOutPage.selectAddress);
-        selectAddress.selectByVisibleText(ConfigurationReader.get(customerName));
+        searchPageHelp.selectSorting(checkOutPage.selectAddress,ConfigurationReader.get(customerName));
         checkOutPage.nextStepButtonInTheInvoicingCard.click();
     }
+
     @And("The user selects a new invoicing address with the {string}")
     public void theUserSelectsANewInvoicingAddressWithThe(String customerName) {
-        Select selectAddress = new Select(checkOutPage.selectAddress);
-        selectAddress.selectByVisibleText(ConfigurationReader.get(customerName));
+        searchPageHelp.selectSorting(checkOutPage.selectAddress,ConfigurationReader.get(customerName));
     }
+
     @And("The user fill out a new shipping address")
     public void theUserfillOutAformForNewShippingAddress(){
         Address newAddress = DataHelper.addressForNewUser();
@@ -125,4 +98,5 @@ public class PurchaseSteps {
         assertEquals(ConfigurationReader.get("messageRequiredCityFieldInCheckOutForm"),
                 checkOutPage.cityRequiredErrorMessage.getText());
     }
+
 }

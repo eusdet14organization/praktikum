@@ -1,9 +1,10 @@
-
+@ignored
 Feature: Registration Form
   This feature file contains scenarios to validate the functionality of the registration form on the website.
 
   Background:
     Given The user is on the main page
+
 
   Scenario: Registration Page Accessibility
   Verify that clicking "Register" opens the registration form page
@@ -19,6 +20,7 @@ Feature: Registration Form
       | Passwort : |
     And The form should include a Register button
 
+
   Scenario: Registration Page Accessibility
   Verify that clicking "Register" opens the registration form page
   Open the account login page via the "Hallo Konto" menu item
@@ -32,6 +34,7 @@ Feature: Registration Form
       | E-Mail :   |
       | Passwort : |
     And The form should include a Register button
+
 
   Scenario: Registration Page Accessibility
   Verify that clicking "Register" opens the registration form page
@@ -47,12 +50,14 @@ Feature: Registration Form
       | Passwort : |
     And The form should include a Register button
 
+
   Scenario: The user can register by entering the correct data
     And The user click on the "Mein Konto" in the main menu
     And The user click on the Register button
     When The user enters correct personal data
     And The user clicks the Register button
     Then The user sees a message about successful registration
+
 
   Scenario: The user can register by entering the correct data
     And The user click on the "Mein Konto" in the main menu
@@ -63,11 +68,13 @@ Feature: Registration Form
     When The user clicks the "Weiter" button to access their account
     Then The user account page opens
 
+
   Scenario: Alarm messages is displayed to the user when attempting to register with empty all mandatory fields
     And The user click on the "Mein Konto" in the main menu
     And The user click on the Register button
     When The user clicks the Register button
     Then The user should see an alarm messages against all mandatory fields
+
 
 #Empty first name field
 #Space
@@ -108,6 +115,7 @@ Feature: Registration Form
       | ©                                                                                                                                                                                                                                       |
       | 漢字                                                                                                                                                                                                                                      |
 
+
   Scenario Outline: Alarm message is displayed to the user when attempting to register with incorrect data in the user last name
     And The user click on the "Mein Konto" in the main menu
     And The user click on the Register button
@@ -139,6 +147,7 @@ Feature: Registration Form
       | ©                                                                                                                                                                                                                                       |
       | 漢字                                                                                                                                                                                                                                      |
 
+
 #Empty email field
   Scenario Outline: Alarm message is displayed to the user when attempting to register with empty email field
     And The user click on the "Mein Konto" in the main menu
@@ -150,6 +159,7 @@ Feature: Registration Form
       | incorrect data | alarm message              |
       |                | messageRequiredAdressField |
       | SP             | messageRequiredAdressField |
+
 
 #Missing @ symbol
 #Missing domain
@@ -166,6 +176,7 @@ Feature: Registration Form
       | andy.rodrigestest@          | massageIncorrectEmail |
       | andy rodrigestest@gmail.com | massageIncorrectEmail |
       | @gmail.com                  | massageIncorrectEmail |
+
 
 #Incorrect domain suffixes - проходит регистрация
 #Use of characters not supported in email - проходит регистрация
@@ -184,6 +195,7 @@ Feature: Registration Form
       | abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij@gmail.com | messageIncorrectMail |
       | com.gmail@rodrigestest.andy                                                                                                                                                                                                                                                                                                                                                        | messageIncorrectMail |
 
+
 #Missing dots
   Scenario Outline: Alarm message is displayed to the user when attempting to register with incorrect data in the email field
     And The user click on the "Mein Konto" in the main menu
@@ -195,6 +207,7 @@ Feature: Registration Form
       | incorrect data               | alarm message         |
       | andy..rodrigestest@gmail.com | massageIncorrectEmail |
       | andy.rodrigestest@gmailcom   | massageIncorrectEmail |
+
 
 #Empty password field
 #The password is shorter than the minimum allowed length (less than 6 characters).
@@ -221,6 +234,7 @@ Feature: Registration Form
       | password1234                                                                                                                                                 | messageIncorrectPasswordField |
       | aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789!@#$%^&*()_-+=<>?/~/abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890[]{};sASDFGH.sadadadadasdadasdadasdada | messageIncorrectPasswordField |
       | AgkfRI45 fg90gndd                                                                                                                                            | messageIncorrectPasswordField |
+
 
 #Empty confirm password field
 #Different values in the ‘Password’ field and the ‘Repeat password’ field

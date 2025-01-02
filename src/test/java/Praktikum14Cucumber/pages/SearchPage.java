@@ -39,8 +39,6 @@ public class SearchPage extends BasePage {
     @FindBy(xpath = "//div[@id='bar-notification']")
     public WebElement windowsNotification;
 
-
-
     @FindBy(xpath = "//div[@class='card']")
     public List<WebElement> listProduct;
 
@@ -55,8 +53,5 @@ public class SearchPage extends BasePage {
 
     @FindBy(xpath = "//button[contains(@class,'btn-danger')]")
     public List<WebElement> listAddToCartButton;
-
-    @FindBy(xpath = "//span[@class='h3 font-weight-normal'][text()]")
-    public List<WebElement> listPriceProduct;
 
 }

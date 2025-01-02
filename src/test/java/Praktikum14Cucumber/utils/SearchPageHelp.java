@@ -28,26 +28,6 @@ public class SearchPageHelp {
     return  namesProduct;
     }
 
-    public int getAmountProductByCategory(WebElement element){
-        return Integer.parseInt(element.getText());
-    }
-
-    public String getMaxAmountProductDisplayed(WebElement element){
-        String amountDisplayed;
-        int amount = getAmountProductByCategory(element);
-        if(amount<=12){
-            amountDisplayed = "12";
-        } else if (amount<=25) {
-            amountDisplayed = "25";
-        } else if (amount<=50) {
-            amountDisplayed = "50";
-        } else if (amount<=75) {
-            amountDisplayed = "75";
-        }else {
-            amountDisplayed ="100";
-        }
-        return amountDisplayed;
-    }
 
     public int randomizer(List<WebElement> list){
         Random random = new Random();
@@ -76,9 +56,6 @@ public class SearchPageHelp {
         return amount;
     }
 
-    public String buildDynamicMessage(String message, String nameProduct){
-        return String.format(ConfigurationReader.get(message),nameProduct);
-    }
 
     public List<String> getAmountBySelect(List<WebElement> amounts){
         List <String> amountsProduct = new ArrayList<>();
