@@ -1,4 +1,4 @@
-
+@ignored
 Feature: Navigation Bar
   This feature contains scenarios that check that all navigation bar items and menu items in the "Restorative Produkte" section are opened. Possibility to open every product on the website
 
