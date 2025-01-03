@@ -6,7 +6,6 @@ import Praktikum14Cucumber.pages.MyAccountPage;
 import Praktikum14Cucumber.utils.ConfigurationReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 

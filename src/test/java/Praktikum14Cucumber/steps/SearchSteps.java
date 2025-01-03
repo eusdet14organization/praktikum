@@ -23,6 +23,7 @@ public class SearchSteps {
     public void theUserEntersTheNameOrPartTheNameOfTheProductInTheSearchFieldAufTopMenu(String nameProduct) {
         homePage.fieldSearch.sendKeys(nameProduct);
         searchPage.searchNavMenuButton.click();
+
     }
 
     @When("The user enters the name or part the name of the {string} in the search field.")
