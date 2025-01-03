@@ -4,7 +4,6 @@ import Praktikum14Cucumber.context.TestContext;
 import Praktikum14Cucumber.pages.ContactPage;
 import Praktikum14Cucumber.pages.HomePage;
 import Praktikum14Cucumber.utils.ConfigurationReader;
-import com.sun.source.tree.AssertTree;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 
@@ -34,19 +33,16 @@ public class ContactSteps {
        assertTrue(contactPage.whatsApp.isDisplayed());
        assertTrue(contactPage.phone.isDisplayed());
        assertTrue(contactPage.emailAddresses.isDisplayed());
-
-
        assertTrue(contactPage.formFields.isDisplayed());
     }
 
 
-    @Then("The user should see {string}")
-    public void theUserShouldSee(String namesOfField) {
+    @Then("The user should see Contact Form")
+    public void theUserShouldSee() {
         assertTrue(contactPage.name.isDisplayed());
         assertTrue(contactPage.email.isDisplayed());
         assertTrue(contactPage.theme.isDisplayed());
         assertTrue(contactPage.request.isDisplayed());
-
     }
 
     @And("The form should include a Submit button")

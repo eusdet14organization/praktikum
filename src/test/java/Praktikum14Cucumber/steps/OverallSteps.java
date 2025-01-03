@@ -35,8 +35,7 @@ public class OverallSteps {
         homePage.loginUser.click();
         accountPage.fillOutTheLogInFormWithData(email,password);
         getActions().moveToElement(accountPage.logInButton).click().perform();
-        getWait().until(ExpectedConditions.visibilityOf(accountPage.nameSubPage));
-        assertTrue(accountPage.nameSubPage.isDisplayed());
+        getWait().until(ExpectedConditions.visibilityOf(accountPage.logOutButton));
         assertTrue(accountPage.titleH1.isDisplayed());
     }
 
