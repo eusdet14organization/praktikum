@@ -27,8 +27,8 @@ public class ContactSteps {
        assertEquals("Dr Müller. Kontakt aufnehmen", TestContext.getDriver().getTitle());
     }
 
-    @Then("The user should see {string} in the contact section")
-    public void theUserShouldSeeInTheContactSection(String contactMethod) {
+    @Then("The user should see ContactMethods in the contact section")
+    public void theUserShouldSeeInTheContactSection() {
        assertTrue(contactPage.address.isDisplayed());
        assertTrue(contactPage.whatsApp.isDisplayed());
        assertTrue(contactPage.phone.isDisplayed());

@@ -14,7 +14,7 @@ Feature: Contact Methods
 
   Scenario: Verify Contact Methods
     And The user click on the "Kontakt" in the navigation menu
-    Then The user should see '<ContactMethods>' in the contact section
+    Then The user should see ContactMethods in the contact section
 
 
   Scenario: verify Contact Fields of  the Contact Form
